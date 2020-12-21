@@ -4,6 +4,7 @@ import Debug exposing (toString)
 import Element exposing (alignRight, centerX, centerY, column, el, fill, layout, padding, paragraph, rgb255, row, spacing, spacingXY, table, text, width)
 import Element.Border as Border
 import Element.Font exposing (center, size)
+import Element.Input as Input exposing (button)
 import Html.Attributes exposing (class)
 import Http
 import Browser
@@ -14,10 +15,10 @@ import List exposing (all, map)
 import Organizations exposing (getOrganizations, printOrganizations)
 import Products exposing (getProducts, printProducts)
 import Result exposing (andThen)
+
 import String exposing (dropLeft, fromInt)
 import Xml.Decode exposing (Decoder, float, int, list, node, requiredPath, run, single, string, succeed)
 import XmlParser exposing (..)
-import Element.Input exposing (button)
 
 import Types exposing (..)
 main =
@@ -37,25 +38,31 @@ init _ =
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   case msg of
-      ToMainPage -> (MainPage, Cmd.none)
-      HttpGetProducts result ->
+      -- Page navigation
+      Go ToMainPage -> (MainPage, Cmd.none)
+      Go ToProductsPage -> (ProductsPage (Err "Loading") Show Nothing, httpProducts)
+      Go ToOrganizationsPage -> (OrganizationsPage (Err "Loading") Show Nothing, httpOrganizations)
+
+      HttpAction (HttpGetProducts result) ->
           let
               productsList = case result of
                   Ok fullText -> getProducts fullText
                   Err e -> Err <| toString e
           in
-              (ProductsPage productsList, Cmd.none)
+              (ProductsPage productsList Show Nothing, Cmd.none)
 
-      HttpGetOrganizations result ->
+      HttpAction (HttpGetOrganizations result) ->
           let
               organizationsList = case result of
                   Ok fullText -> getOrganizations fullText
                   Err e -> Err <| toString e
           in
-              (OrganizationsPage organizationsList, Cmd.none)
+              (OrganizationsPage organizationsList Show Nothing, Cmd.none)
 
-      ToProductsPage -> (ProductsPage (Err "Loading"), httpProducts)
-      ToOrganizationsPage -> (OrganizationsPage (Err "Loading"), httpOrganizations)
+      PageAction Add Start -> (ProductsPage (Err "Not") Add Nothing, Cmd.none)
+      PageAction operation actionType -> Debug.todo "надо бы сделать, да"
+
+
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
@@ -77,17 +84,17 @@ view model =
               row [ centerX, centerY ]
                   [   column [ centerX, spacing 10 ]
                       [ paragraph [center, size 50] [ text "Main page" ]
-                      , button buttonStyle {onPress=Just ToProductsPage, label=text "Products page"}
-                      , button buttonStyle {onPress=Just ToOrganizationsPage, label=text "Organizations page"}
+                      , button buttonStyle {onPress=Just <| Go ToProductsPage, label=text "Products page"}
+                      , button buttonStyle {onPress=Just <| Go ToOrganizationsPage, label=text "Organizations page"}
                       ]
                   ]
 
-      ProductsPage products ->
+      ProductsPage products Show df->
           layout [] <|
               row [ centerX]
                   [   column [ centerX, spacing 10 ]
                       [ paragraph [ center ] [ text "Products page" ]
-                      , button buttonStyle {onPress=Just ToMainPage, label=text "Main page"}
+                      , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
                       , paragraph [centerX] [
                           case products of
                               Ok prds -> printProducts prds
@@ -95,12 +102,32 @@ view model =
                           ]
                       ]
                   ]
-      OrganizationsPage organizations ->
+
+      ProductsPage products Add (Just prdPrd) ->
+          let
+              product = (\(Prd productInside) -> productInside) prdPrd
+
+          in
+              layout [] <|
+                  row [ centerX]
+                      [   column [ centerX, spacing 10 ]
+                          [ paragraph [ center ] [ text "Products page" ]
+                          , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
+                          , Input.text []
+                              { onChange=(\s -> ProductsPage products (Just (Prd { product | name = "kek"})))
+                              , text = "Name"
+                              , placeholder = Nothing
+                              , label = Input.labelAbove [] (text "Label")
+                              }
+                          ]
+                      ]
+      OrganizationsPage organizations Show df ->
           layout [] <|
               row [ Element.centerX]
                   [   column [ Element.centerX]
-                      [ paragraph [centerX, width fill] [text "Optimizations page"]
-                      , button buttonStyle {onPress=Just ToMainPage, label=text "Main page"}
+                      [ paragraph [center] [text "Organizations page"]
+                      , button buttonStyle {onPress=Just <| PageAction Add Start, label=text "Add organization"}
+                      , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
                       , paragraph [centerX] [
                           case organizations of
                               Ok orgs -> printOrganizations orgs
@@ -108,4 +135,14 @@ view model =
                           ]
                       ]
                   ]
+      ProductsPage _ Edit _ -> Debug.todo "kek"
+      ProductsPage _ Delete _ -> Debug.todo "kek"
+      ProductsPage _ Add _ -> Debug.todo "kek"
+      ProductsPage _ Filter _ -> Debug.todo "kek"
+      ProductsPage _ Sort _ -> Debug.todo "kek"
 
+      OrganizationsPage _ Edit _ -> Debug.todo "kek"
+      OrganizationsPage _ Delete _ -> Debug.todo "kek"
+      OrganizationsPage _ Add _ -> Debug.todo "kek"
+      OrganizationsPage _ Filter _ -> Debug.todo "kek"
+      OrganizationsPage _ Sort _ -> Debug.todo "kek"

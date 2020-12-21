@@ -1,7 +1,9 @@
 module Organizations exposing (..)
 
 import Debug exposing (toString)
-import Element exposing (fill, table, text)
+import Element exposing (centerX, el, fill, padding, rgb255, spacing, table, text)
+import Element.Border as Border
+import Element.Input exposing (button)
 import List exposing (map)
 import Utils exposing (nodeToXmlString, traverse)
 import Xml.Decode exposing (Decoder, int, list, node, requiredPath, run, single, string, succeed)
@@ -11,6 +13,7 @@ type alias Organization =
     , fullname : String
     , employeescount : Int
     }
+
 type alias Organizations =
     { organizations : List String
     }
@@ -28,7 +31,9 @@ organizationDecoder =
         |> requiredPath [ "fullname" ] (single string)
         |> requiredPath [ "employeescount" ] (single int)
 
-printOrganizations organizations = table []
+simpleBorders = [Border.width 1, Border.color <| rgb255 200 200 200]
+
+printOrganizations organizations = table [spacing 10]
     { data = organizations
     , columns =
         [
@@ -53,6 +58,41 @@ printOrganizations organizations = table []
             }
         ]
     }
+
+
+buttonStyle =
+    [ padding 5
+    , Border.width 1
+    , Border.rounded 3
+    , Border.color <| rgb255 200 200 200
+    , centerX
+    ]
+
+--addOrganizationsView organizations = table [spacing 10]
+--    { data = organizations
+--    , columns =
+--        [
+--            { header = text ""
+--            , width = fill
+--            , view = \_ -> button buttonStyle {onPress = Just <| PageAction Add   , label = text "+"}
+--            }
+--        ,
+--            { header = text "name"
+--            , width = fill
+--            , view = \organization -> Element.Input.text [] {onChange = \(s) -> AddOrganizationName s, }
+--            }
+--        ,
+--            { header = text "fullname"
+--            , width = fill
+--            , view = \organization -> text organization.fullname
+--            }
+--        ,
+--            { header = text "employeescount"
+--            , width = fill
+--            , view = \organization -> text <| toString organization.employeescount
+--            }
+--        ]
+--    }
 
 
 getOrganizations : String -> Result String (List Organization)

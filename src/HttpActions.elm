@@ -2,16 +2,16 @@ module HttpActions exposing (..)
 
 
 import Http
-import Types exposing (Msg(..))
+import Types exposing (HttpMsg(..), Msg(..))
 
-urlBase = "http://60ada6e2b6e6.ngrok.io/lab1coa-1.0-SNAPSHOT/"
+urlBase = "http://localhost:8080/lab1coa-1.0-SNAPSHOT/"
 
 httpProducts = Http.get
     { url = urlBase ++ "products"
-    , expect = Http.expectString HttpGetProducts
+    , expect = Http.expectString (\res -> HttpAction <| HttpGetProducts res)
     }
 
 httpOrganizations = Http.get
     { url = urlBase ++ "organizations"
-    , expect = Http.expectString HttpGetOrganizations
+    , expect = Http.expectString (\res -> HttpAction <| HttpGetOrganizations res)
     }
