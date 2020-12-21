@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="48190c3a-ce29-458c-b944-c8b2cda2fbd7" name="Default Changelist" comment="products page work and divide to pages" />
+    <list default="true" id="48190c3a-ce29-458c-b944-c8b2cda2fbd7" name="Default Changelist" comment="products page work and divide to pages">
+      <change afterPath="$PROJECT_DIR$/src/Pages/Layouts.elm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Pages/MainPage.elm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Pages/OrganizationsPage.elm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Pages/ProductsPage.elm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Pages/Styles.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/HttpActions.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/HttpActions.elmo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Main.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Main.elmo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Organizations.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Organizations.elmi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Organizations.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Organizations.elmo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Types.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Types.elmi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Types.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Types.elmo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/d.dat" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/d.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm.json" beforeDir="false" afterPath="$PROJECT_DIR$/elm.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataField.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/DataField.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HttpActions.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/HttpActions.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Organizations.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Organizations.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Products.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Products.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Types.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Types.elm" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,6 +59,11 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Data" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="ELM_TEST_RUN_CONFIGURATION" factoryName="Elm Test configuration factory">
       <ElmTestRunConfiguration elm-folder="$PROJECT_DIR$" />
@@ -55,7 +81,7 @@
       <workItem from="1608209834759" duration="252000" />
       <workItem from="1608210093284" duration="21000" />
       <workItem from="1608210120837" duration="6421000" />
-      <workItem from="1608561041396" duration="389000" />
+      <workItem from="1608561041396" duration="10752000" />
     </task>
     <task id="LOCAL-00001" summary="products page work and divide to pages">
       <created>1608221394161</created>
@@ -64,7 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608221394161</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="1234">
+      <created>1608561449657</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1608561449657</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -84,7 +117,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="products page work and divide to pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="products page work and divide to pages" />
+    <MESSAGE value="1234" />
+    <option name="LAST_COMMIT_MESSAGE" value="1234" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

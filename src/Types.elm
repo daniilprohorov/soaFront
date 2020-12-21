@@ -8,8 +8,8 @@ import Products exposing (Product)
 
 type Model
   = MainPage
-  | ProductsPage (Result String (List Product)) Operation (Maybe DataField)
-  | OrganizationsPage (Result String (List Organization)) Operation (Maybe DataField)
+  | ProductsPage Operation (Maybe DataField)
+  | OrganizationsPage Operation (Maybe DataField)
 
 type Msg = Go ToPage | PageAction Operation ActionType | HttpAction HttpMsg
 
