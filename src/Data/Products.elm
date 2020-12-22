@@ -10,6 +10,18 @@ import Xml.Decode exposing (Decoder, float, int, list, node, requiredPath, run, 
 
 import Utils exposing (nodeToXmlString, traverse)
 
+type alias ProductInput =
+    { name : Maybe String
+    , x : Maybe String
+    , y : Maybe String
+    , creationdate : Maybe String
+    , price : Maybe String
+    , unitofmeasure : Maybe String
+    , manufacturer : Maybe String
+    }
+
+productInputDef = ProductInput Nothing Nothing Nothing Nothing Nothing Nothing Nothing
+
 
 type alias Product =
     { id : Int

@@ -2,26 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48190c3a-ce29-458c-b944-c8b2cda2fbd7" name="Default Changelist" comment="products page work and divide to pages">
-      <change afterPath="$PROJECT_DIR$/src/Pages/Layouts.elm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pages/MainPage.elm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pages/OrganizationsPage.elm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pages/ProductsPage.elm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pages/Styles.elm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Pages/Elements.elm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Validation/Fields.elm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Validation/ProductsValidation.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/DataField.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/DataField.elmi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/DataField.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/DataField.elmo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/HttpActions.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/HttpActions.elmi" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/HttpActions.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/HttpActions.elmo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Main.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Main.elmo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Organizations.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Organizations.elmi" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Organizations.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Organizations.elmo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Products.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Products.elmi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Products.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Products.elmo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Types.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Types.elmi" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Types.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Types.elmo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Utils.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Utils.elmi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Utils.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Utils.elmo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/d.dat" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/d.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elm.json" beforeDir="false" afterPath="$PROJECT_DIR$/elm.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataField.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/DataField.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/DataField.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/DataField.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/Organizations.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Organizations.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/Products.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Products.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HttpActions.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/HttpActions.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.elm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Organizations.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Organizations.elm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Products.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Products.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/ProductsPage.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/ProductsPage.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Types.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Types.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils.elm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +51,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1lmkozDLdCH6Tu51GcMKyht8XCe" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -70,7 +77,10 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="48190c3a-ce29-458c-b944-c8b2cda2fbd7" name="Default Changelist" comment="" />
@@ -119,6 +129,48 @@
     <MESSAGE value="products page work and divide to pages" />
     <MESSAGE value="1234" />
     <option name="LAST_COMMIT_MESSAGE" value="1234" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="733" y="101" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608111526110">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="733" y="101" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1608111526110" />
+    <state x="821" y="-4" width="902" height="913" key="CommitChangelistDialog2" timestamp="1608581559685">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="821" y="-4" width="902" height="913" key="CommitChangelistDialog2/0.0.2560.1080@0.0.2560.1080" timestamp="1608581559685" />
+    <state x="1061" y="249" width="426" height="471" key="FileChooserDialogImpl" timestamp="1607875040093">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="1061" y="249" width="426" height="471" key="FileChooserDialogImpl/0.0.2560.1080@0.0.2560.1080" timestamp="1607875040093" />
+    <state x="862" y="244" width="826" height="514" key="IDE.errors.dialog" timestamp="1608122127177">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="862" y="244" width="826" height="514" key="IDE.errors.dialog/0.0.2560.1080@0.0.2560.1080" timestamp="1608122127177" />
+    <state x="768" y="142" key="SettingsEditor" timestamp="1607875025682">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="768" y="142" key="SettingsEditor/0.0.2560.1080@0.0.2560.1080" timestamp="1607875025682" />
+    <state x="1514" y="243" width="802" height="515" key="Vcs.Push.Dialog.v2" timestamp="1608201439117">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="1514" y="243" width="802" height="515" key="Vcs.Push.Dialog.v2/0.0.2560.1080@0.0.2560.1080" timestamp="1608201439117" />
+    <state x="876" y="-73" width="764" height="603" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1608328053378">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="876" y="-73" width="764" height="603" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2560.1080@0.0.2560.1080" timestamp="1608328053378" />
+    <state x="1046" y="325" width="453" height="172" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608581734059">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="1046" y="325" width="453" height="172" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1080@0.0.2560.1080" timestamp="1608581734059" />
+    <state x="1721" y="387" width="383" height="163" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1608201425507">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="1721" y="387" width="383" height="163" key="git4idea.remote.GitConfigureRemotesDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1608201425507" />
+    <state x="943" y="222" width="672" height="678" key="search.everywhere.popup" timestamp="1608314315411">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="943" y="222" width="672" height="678" key="search.everywhere.popup/0.0.2560.1080@0.0.2560.1080" timestamp="1608314315411" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

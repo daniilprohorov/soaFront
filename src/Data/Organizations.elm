@@ -14,6 +14,14 @@ type alias Organization =
     , employeescount : Int
     }
 
+type alias OrganizationInput =
+    { name : Maybe String
+    , fullname : Maybe String
+    , employeescount : Maybe String
+    }
+
+organizationInputDef = OrganizationInput Nothing Nothing Nothing
+
 type alias Organizations =
     { organizations : List String
     }
