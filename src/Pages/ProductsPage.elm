@@ -8,18 +8,18 @@ import Pages.Elements exposing (inputProducts)
 import Pages.Layouts exposing (centerLayout, centerXLayout)
 import Pages.Styles exposing (buttonStyle)
 import Products exposing (printProducts, productInputDef, Product)
-import Types exposing (ActionType(..), Msg(..), Operation(..), ToPage(..))
+import Types exposing (ActionType(..), Msg(..), Operation(..), ToPage(..), addProductMsgDef)
 
 showProductsPage operation data = case operation of
     Show -> showProducts data
-    Add -> addProduct Start
+    Add (PrdInp dataFieldInput) send fail -> addProduct dataFieldInput send fail
     _ -> Debug.todo "lul"
 
 showProducts data = case data of
     Just (Prds products) -> centerXLayout
         [ paragraph [ center ] [ text "Products page" ]
-        , button buttonStyle {onPress=Just <| PageAction Add Start, label=text "Add Product"}
         , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
+        , button buttonStyle {onPress=Just <| addProductMsgDef, label=text "Add Product"}
         --, Input.text []
         --    { onChange=(\s -> Go ToMainPage)
         --    , text = "Name"
@@ -37,24 +37,18 @@ showProducts data = case data of
         , paragraph [centerX] [ text "wait" ]
         ]
 
-addProduct data = case data of
-    Start -> centerXLayout
+addProduct dataFieldInput send fail = case (dataFieldInput, send, fail) of
+    (productInput, False, Nothing) -> centerXLayout
         [ paragraph [ center ] [ text "Add Products" ]
-        --, button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Validate and send"}
-        , paragraph [centerX] [ text "wait" ]
-        , inputProducts (PrdInp productInputDef)
+        , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
+        , button buttonStyle {onPress= Just <| PageAction (Add (PrdInp productInput) True Nothing), label=text "Send"}
+        --, paragraph [centerX] [ text "wait" ]
+        , inputProducts productInput
         ]
-
-    Store dataFieldInput -> centerXLayout
+    (_, _, Just msg) -> centerXLayout
         [ paragraph [ center ] [ text "Add Products" ]
-        , button buttonStyle {onPress=Just <| PageAction Add (Check dataFieldInput), label=text "Validate and send"}
-        , paragraph [centerX] [ text "wait" ]
-        , inputProducts dataFieldInput
+        , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
+        , paragraph [centerX] [ text msg ]
+        --, inputProducts (PrdInp productInputDef)
         ]
-
-    Fail string -> Debug.todo "fail"
-
-    Send dataField -> Debug.todo "Send"
-
-    Check dataFieldInput -> Debug.todo "check"
 

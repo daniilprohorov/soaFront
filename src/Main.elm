@@ -113,4 +113,5 @@ view model =
   case model of
       MainPage -> showMainPage
       ProductsPage operation data -> showProductsPage operation data
-      OrganizationsPage operation data -> showOrganizationsPage operation data
+      OrganizationsPage operation data -> Debug.todo "organizations page"
+      --OrganizationsPage operation data -> showOrganizationsPage operation data

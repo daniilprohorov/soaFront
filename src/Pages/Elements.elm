@@ -7,19 +7,18 @@ import Types exposing (ActionType(..), Msg(..), Operation(..))
 import Validation.Fields exposing (validateName)
 
 updateName product str = case validateName str of
-    Ok name -> PageAction Add (Store <| PrdInp {product | name = Just name})
-    Err e   -> PageAction Add (Fail e)
+    Ok name -> PageAction <| Add (PrdInp {product | name = Just name}) False Nothing
+    Err e   -> PageAction <| Add (PrdInp product) False (Just e)
 
 
-inputProducts productInput = case productInput of
-    PrdInp product ->
-        row [ centerX ]
-            [ Input.text []
-                { onChange=updateName product
-                , text = "Name"
-                , placeholder = Nothing
-                , label = Input.labelAbove [] (text "Name")
-                }
+inputProducts productInput =
+    row [ centerX ]
+        [ Input.text []
+            { onChange=updateName productInput
+            , text = "Name"
+            , placeholder = Nothing
+            , label = Input.labelAbove [] (text "Name")
+            }
             --, Input.text []
             --    { onChange=(\x_ -> PageAction Add (Store <| Prd {product | name = x_} ))
             --    , text = "x"
@@ -27,6 +26,4 @@ inputProducts productInput = case productInput of
             --    , label = Input.labelAbove [] (text "Name")
             --    }
             ]
-
-    _ -> Debug.todo "Can not go to this way"
 
