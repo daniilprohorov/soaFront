@@ -9,6 +9,7 @@ import Pages.Layouts exposing (centerXLayout)
 import Pages.Styles exposing (buttonStyle)
 import Types exposing (Msg(..), Operation(..), ToPage(..))
 
+lol = ""
 --showOrganizationsPage operation data = case operation of
 --    Show -> showOrganizations data
 --    Add -> addOrganization data

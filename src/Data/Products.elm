@@ -1,7 +1,9 @@
 module Products exposing (..)
 
 import Debug exposing (toString)
-import Element exposing (fill, table, text)
+import Element exposing (centerX, clip, fill, padding, paragraph, px, spacing, table, text)
+import Element.Border as Border
+import Element.Font as Font exposing (bold, size)
 import List exposing (map)
 --import Types exposing (Msg(..))
 
@@ -54,46 +56,48 @@ productDecoder =
         |> requiredPath [ "unitofmeasure" ] (single string)
         |> requiredPath [ "manufacturer" ] (single int)
 
-printProducts products = table []
+headerStyle = [bold, size 14]
+
+printProducts products = table [size 12, Font.center]
     { data = products
     , columns =
         [
-            { header = text "id"
+            { header = paragraph headerStyle [ text "id" ]
             , width = fill
             , view = \product -> text <| toString product.id
             }
         ,
-            { header = text "name"
+            { header = paragraph headerStyle [ text "name" ]
             , width = fill
             , view = \product -> text product.name
             }
         ,
-            { header = text "x"
+            { header = paragraph headerStyle [text "x" ]
             , width = fill
             , view = \product -> text <| toString product.x
             }
         ,
-            { header = text "y"
+            { header = paragraph headerStyle [ text "y" ]
             , width = fill
             , view = \product -> text <| toString product.y
             }
         ,
-            { header = text "creationdate"
+            { header = paragraph headerStyle [ text "creationdate" ]
             , width = fill
             , view = \product -> text product.creationdate
             }
         ,
-            { header = text "price"
+            { header = paragraph headerStyle [ text "price"]
             , width = fill
             , view = \product -> text <| toString product.price
             }
         ,
-            { header = text "unitofmeasure"
+            { header = paragraph headerStyle [ text "unit\n", text "of\n", text "measure" ]
             , width = fill
             , view = \product -> text product.unitofmeasure
             }
         ,
-            { header = text "manufacturer"
+            { header = paragraph headerStyle [ text "manufacturer" ]
             , width = fill
             , view = \product -> text <| toString product.manufacturer
             }

@@ -29,3 +29,14 @@ and xs = all (\x -> x) xs
 isJust maybe = case maybe of
     Just _ -> True
     _      -> False
+
+formUrlencoded : List ( String, String ) -> String
+formUrlencoded object =
+    object
+        |> List.map
+            (\( name, value ) ->
+                name
+                    ++ "="
+                    ++ value
+            )
+        |> String.join "&"

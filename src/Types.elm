@@ -16,23 +16,28 @@ type Msg = Go ToPage | PageAction Operation | HttpAction HttpMsg
 type ToPage = ToMainPage | ToProductsPage | ToOrganizationsPage
 
 type Operation
-    = Show
+    = Main (Maybe String) (Maybe (List String)) Int Int -- sort [filter] itemsperpage page
     | ShowById Int
-    | DeleteById Int
-    | Filter DataFieldInput
-    | Sort String
+    | DeleteById Int Bool (Maybe String)
     | Add DataFieldInput Bool (Maybe String)
+    | Edit Int DataFieldInput Bool (Maybe String)
+    | IncPageCount
+    | DecPageCount
+    | IncCurrentPage
+    | DecCurrentPage
 
-type ActionType = Start | Store DataFieldInput | Check DataFieldInput | Fail String | Send DataFieldInput
+--type ActionType = Start | Store DataFieldInput | Check DataFieldInput | Fail String | Send DataFieldInput
 
-type HttpMsg =
-    HttpGetProducts (Result Http.Error String) |
-    HttpGetOrganizations (Result Http.Error String) |
-    HttpResult (Result Http.Error String)
+type HttpMsg
+    = HttpGetProducts (Result Http.Error String)
+    | HttpGetOrganizations (Result Http.Error String)
+    | HttpAddProduct (Result Http.Error String)
+    | HttpDeleteProduct (Result Http.Error String)
+    | HttpEditProduct (Result Http.Error String)
 
 
 addProductMsgDef = PageAction (Add (PrdInp productInputDef) False Nothing)
 
 addOrganizationMsgDef = PageAction (Add (OrgInp organizationInputDef) False Nothing)
 
-
+defMain = Main Nothing Nothing 20 1
