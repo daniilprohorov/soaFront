@@ -10,7 +10,6 @@ import Utils exposing (formUrlencoded, isJust)
 import Validation.ProductsValidation exposing (checkDataFieldEditP, checkDataFieldInputP)
 
 productPageUpdate operation = case operation of
-
     Main s f i p-> (ProductsPage (Main s f i p) Nothing, httpProducts s f i p)
     Add dataFieldInput False Nothing -> (ProductsPage (Add dataFieldInput False Nothing) Nothing , Cmd.none)
     Add dataFieldInput True Nothing -> case checkDataFieldInputP dataFieldInput of

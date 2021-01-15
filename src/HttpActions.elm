@@ -3,11 +3,26 @@ module HttpActions exposing (..)
 
 import Html as Encode
 import Http
-import Types exposing (HttpMsg(..), Msg(..))
+import List exposing (map)
+import Types exposing (Filter(..), HttpMsg(..), Msg(..))
 import Utils exposing (formUrlencoded)
 import Xml.Decode as Encode
 
-urlBase = "http://localhost:8080/lab1coa-1.0-SNAPSHOT/"
+urlBase = "http://62960d6540e0.ngrok.io/lab1coa-1.0-SNAPSHOT/"
+
+
+filterToTuple filter value = case filter of
+    IdF -> ("filter-by-id", value)
+    NameF -> ("filter-by-name", value)
+    XF -> ("filter-by-x", value)
+    YF -> ("filter-by-y", value)
+    DateF -> ("filter-by-date", value)
+    PriceF -> ("filter-by-price", value)
+    UnitOfMeasureF -> ("filter-by-unitofmeasure", value)
+    ManufacturerF -> ("filter-by-manufacturer", value)
+
+filtersToTuples filtersList = map (\(filter, value) -> filterToTuple filter value) filtersList
+
 
 parameters sort filterLIst itemsperpage page = case (sort, filterLIst) of
     (Nothing, Nothing) ->
@@ -22,13 +37,13 @@ parameters sort filterLIst itemsperpage page = case (sort, filterLIst) of
     (Nothing, Just f) ->
         [ ("itemsperpage", String.fromInt itemsperpage)
         , ("page", String.fromInt page)
-        ] ++ f
+        ] ++ filtersToTuples f
 
     (Just s, Just f) ->
         [ ("itemsperpage", String.fromInt itemsperpage)
         , ("page", String.fromInt page)
         , ("sortBy", s)
-        ] ++ f
+        ] ++ filtersToTuples f
 
 httpProducts sort filterList itemsperpage page =
     let

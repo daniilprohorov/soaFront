@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48190c3a-ce29-458c-b944-c8b2cda2fbd7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Update/HttpListener.elm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Update/MainPageListener.elm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Update/MovePageListener.elm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Update/OrganizationPageListener.elm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Update/ProductPageListener.elm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Update/Update.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/HttpActions.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/HttpActions.elmi" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/HttpActions.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/HttpActions.elmo" afterDir="false" />
@@ -16,8 +10,6 @@
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-Elements.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-Elements.elmo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-Layouts.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-Layouts.elmi" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-Layouts.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-Layouts.elmo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-OrganizationsPage.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-OrganizationsPage.elmi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-OrganizationsPage.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-OrganizationsPage.elmo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-ProductsPage.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-ProductsPage.elmi" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-ProductsPage.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-ProductsPage.elmo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Products.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Products.elmi" afterDir="false" />
@@ -32,18 +24,9 @@
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Validation-ProductsValidation.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Validation-ProductsValidation.elmo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/d.dat" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/d.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/i.dat" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/i.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elm.json" beforeDir="false" afterPath="$PROJECT_DIR$/elm.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/Products.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Products.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HttpActions.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/HttpActions.elm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.elm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Elements.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Elements.elm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Layouts.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Layouts.elm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/OrganizationsPage.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/OrganizationsPage.elm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/ProductsPage.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/ProductsPage.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Types.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Types.elm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils.elm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Validation/Fields.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validation/Fields.elm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Validation/ProductsValidation.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validation/ProductsValidation.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Update/ProductPageListener.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Update/ProductPageListener.elm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +48,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="ProjectId" id="1lmkozDLdCH6Tu51GcMKyht8XCe" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -76,7 +60,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/workspace/soaFront" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="org.elm.workspace.PROJECT_DISCOVERY" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -98,7 +82,7 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
   <component name="SvnConfiguration">
     <configuration />
   </component>

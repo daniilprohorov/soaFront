@@ -15,8 +15,10 @@ type Msg = Go ToPage | PageAction Operation | HttpAction HttpMsg
 
 type ToPage = ToMainPage | ToProductsPage | ToOrganizationsPage
 
+type Filter = IdF | NameF | XF | YF | DateF | PriceF | UnitOfMeasureF | ManufacturerF
+
 type Operation
-    = Main (Maybe String) (Maybe (List String)) Int Int -- sort [filter] itemsperpage page
+    = Main (Maybe String) (Maybe (List (Filter, String))) Int Int -- sort [filter] itemsperpage page
     | ShowById Int
     | DeleteById Int Bool (Maybe String)
     | Add DataFieldInput Bool (Maybe String)
