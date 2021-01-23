@@ -104,6 +104,7 @@ printProducts products = table [size 12, Font.center]
         ]
     }
 
+getProduct str = run productDecoder str
 
 getProducts : String -> Result String (List Product)
 getProducts str =

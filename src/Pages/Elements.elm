@@ -67,10 +67,24 @@ updateIdD str = case toInt str of
     Just i -> PageAction <| (DeleteById i ) False Nothing
     Nothing -> PageAction <| (DeleteById 0 ) False (Just "input is not valid")
 
+updateIdS str = case toInt str of
+    Just i -> PageAction <| (ShowById i ) False Nothing Nothing
+    Nothing -> PageAction <| (ShowById 0 ) False (Just "input is not valid") Nothing
+
 deleteProductEl id =
     row [ centerX, spacing 16 ]
         [ Input.text [width <| px 100]
             { onChange=updateIdD
+            , text = String.fromInt id
+            , placeholder = Nothing
+            , label = Input.labelAbove [center] (text "Id")
+            }
+        ]
+
+showByIdProductEl id =
+    row [ centerX, spacing 16 ]
+        [ Input.text [width <| px 100]
+            { onChange=updateIdS
             , text = String.fromInt id
             , placeholder = Nothing
             , label = Input.labelAbove [center] (text "Id")

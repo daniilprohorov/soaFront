@@ -1,5 +1,6 @@
 module Utils exposing (..)
 
+import Http exposing (Error(..))
 import List exposing (foldl, map)
 import String exposing (dropLeft)
 import XmlParser exposing (format, Xml, ProcessingInstruction)
@@ -40,3 +41,21 @@ formUrlencoded object =
                     ++ value
             )
         |> String.join "&"
+
+errorToString : Http.Error -> String
+errorToString error =
+    case error of
+        BadUrl url ->
+            "The URL " ++ url ++ " was invalid"
+        Timeout ->
+            "Unable to reach the server, try again"
+        NetworkError ->
+            "Unable to reach the server, check your network connection"
+        BadStatus 500 ->
+            "The server had a problem, try again later"
+        BadStatus 400 ->
+            "Verify your information and try again"
+        BadStatus s -> if s == 404 then "not found" else String.fromInt s
+        BadBody errorMessage ->
+            errorMessage
+
