@@ -5,7 +5,7 @@ import Element exposing (centerX, column, paragraph, px, text, width)
 import Element.Font exposing (center)
 import Element.Input as Input exposing (button)
 import Maybe exposing (withDefault)
-import Pages.Elements exposing (deleteProductEl, editProductEl, inputProductEl, showByIdProductEl)
+import Pages.Elements exposing (deleteEl, editProductEl, inputProductEl, showByIdEl)
 import Pages.Layouts exposing (centerLayout, centerXLayout, twoColumnsLayout)
 import Pages.Styles exposing (buttonStyle)
 import Products exposing (printProducts, productInputDef, Product)
@@ -35,14 +35,14 @@ mainProducts data sort filter filterApply elemsPerPage page = case data of
             , button buttonStyle {onPress=Just <| PageAction (Main (Just "manufacturer") filter filterApply elemsPerPage page), label=text"manufacturer"}
             ]
         , column buttonStyle
-            [ paragraph [center] [text "Filter"]
-            , Input.text [width <| px 400]
-                { onChange=(\s -> PageAction (UpdateFilter sort (Just s) False elemsPerPage page data))
+            [ Input.text [width <| px 400]
+                { onChange=(\s -> PageAction (UpdateFilter sort (Just s) False False elemsPerPage page data))
                 , text = withDefault "" filter
                 , placeholder = Nothing
                 , label = Input.labelAbove [center] (text "FILTER VALUE")
                 }
-            , button buttonStyle {onPress=Just <|   PageAction (UpdateFilter sort filter True elemsPerPage page data), label=text"APPLY"}
+            , button buttonStyle {onPress=Just <|   PageAction (UpdateFilter sort filter True False elemsPerPage page data), label=text"APPLY"}
+            , button buttonStyle {onPress=Just <|   PageAction (UpdateFilter sort filter False True elemsPerPage page data), label=text"Start With"}
             ]
         , button buttonStyle {onPress=Just <| addProductMsgDef, label=text "Add Product"}
         , button buttonStyle {onPress=Just <| PageAction (DeleteById 0 False Nothing), label=text "Delete by Id"}
@@ -130,7 +130,7 @@ deleteProduct id fail = case fail of
         , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
         , button buttonStyle {onPress= Just <| PageAction (DeleteById id True Nothing), label=text "Delete"}
         ]
-        [ deleteProductEl id
+        [ deleteEl id
         ]
 
     Just e -> twoColumnsLayout
@@ -139,7 +139,7 @@ deleteProduct id fail = case fail of
         , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
         , button buttonStyle {onPress= Just <| PageAction (DeleteById id True Nothing), label=text "Delete"}
         ]
-        [ deleteProductEl id
+        [ deleteEl id
         , paragraph [centerX] [ text e ]
         ]
 
@@ -150,7 +150,7 @@ showByIdProduct id fail data = case (fail, data) of
         , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
         , button buttonStyle {onPress= Just <| PageAction (ShowById id True Nothing Nothing), label=text "Show"}
         ]
-        [ showByIdProductEl id
+        [ showByIdEl id
         ]
 
     (Nothing, Just (Prd product)) -> twoColumnsLayout
@@ -170,7 +170,7 @@ showByIdProduct id fail data = case (fail, data) of
         , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
         , button buttonStyle {onPress= Just <| PageAction (ShowById id True Nothing Nothing), label=text "Show"}
         ]
-        [ showByIdProductEl id
+        [ showByIdEl id
         , paragraph [centerX] [ text e ]
         ]
 

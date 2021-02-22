@@ -11,11 +11,11 @@ update : Msg -> Model -> (Model, Cmd Msg)
 update msg model = case msg of
     Go page -> moveUpdate page
     PageAction operation -> pageAction model operation
-    HttpAction httpMsg -> httpUpdate httpMsg
+    HttpAction httpMsg -> httpUpdate httpMsg model
 
 pageAction model operation = case model of
     ProductsPage _ _ -> productPageUpdate operation
     OrganizationsPage _ _ -> organizationPageUpdate operation
-    MainPage -> mainPageUpdate
+    MainPage s a -> mainPageUpdate s a
 
 

@@ -7,7 +7,7 @@ import Organizations exposing (Organization, organizationInputDef)
 import Products exposing (Product, ProductInput, productInputDef)
 
 type Model
-  = MainPage
+  = MainPage (Maybe String) (Maybe String)
   | ProductsPage Operation (Maybe DataField)
   | OrganizationsPage Operation (Maybe DataField)
 
@@ -21,16 +21,22 @@ type Operation
     | DeleteById Int Bool (Maybe String)
     | Add DataFieldInput Bool (Maybe String)
     | Edit Int DataFieldInput Bool (Maybe String)
-    | UpdateFilter (Maybe String) (Maybe String) Bool Int Int (Maybe DataField) -- sort filter filterApply itemsperpage page data
+    | UpdateFilter (Maybe String) (Maybe String) Bool Bool Int Int (Maybe DataField) -- sort filter filterApply startWith itemsperpage page data
 --type ActionType = Start | Store DataFieldInput | Check DataFieldInput | Fail String | Send DataFieldInput
 
 type HttpMsg
     = HttpGetProducts (Result Http.Error String) (Maybe String) Bool Int Int -- Data, filter, filterApply, Count Per page, page
-    | HttpGetOrganizations (Result Http.Error String)
+    | HttpGetOrganizations (Result Http.Error String) (Maybe String) Bool Int Int
     | HttpAddProduct (Result Http.Error String)
+    | HttpAddOrganization (Result Http.Error String)
     | HttpDeleteProduct (Result Http.Error String)
+    | HttpDeleteOrganization (Result Http.Error String)
     | HttpShowProduct (Result Http.Error String)
+    | HttpShowOrganization (Result Http.Error String)
     | HttpEditProduct (Result Http.Error String)
+    | HttpEditOrganization (Result Http.Error String)
+    | HttpPriceSum (Result Http.Error String)
+    | HttpPriceAvg (Result Http.Error String)
 
 
 addProductMsgDef = PageAction (Add (PrdInp productInputDef) False Nothing)

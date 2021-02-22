@@ -6,10 +6,11 @@ import Dict exposing (get)
 import Http exposing (header)
 import Browser
 import Html exposing (Html, div, tbody, td, th, thead, tr)
-import HttpActions exposing (httpAddProduct, httpOrganizations, httpProducts)
+import HttpActions exposing (httpAddProduct, httpOrganizations, httpPriceSum, httpProducts)
 import Maybe exposing (withDefault)
 import Organizations exposing (getOrganizations, printOrganizations)
 import Pages.MainPage exposing (showMainPage)
+import Pages.OrganizationsPage exposing (showOrganizationsPage)
 import Pages.ProductsPage exposing (showProductsPage)
 import Products exposing (getProducts, printProducts)
 import Result exposing (andThen)
@@ -31,8 +32,8 @@ main =
 
 init : () -> (Model, Cmd Msg)
 init _ =
-  ( MainPage
-  , Cmd.none
+  ( MainPage Nothing Nothing
+  , httpPriceSum
   )
 
 subscriptions : Model -> Sub Msg
@@ -42,6 +43,6 @@ subscriptions model =
 view : Model -> Html Msg
 view model =
   case model of
-      MainPage -> showMainPage
+      MainPage s a-> showMainPage s a
       ProductsPage operation data -> showProductsPage operation data
-      OrganizationsPage operation data -> Debug.todo "organizations page"
+      OrganizationsPage operation data -> showOrganizationsPage operation data

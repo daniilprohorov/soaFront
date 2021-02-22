@@ -2,7 +2,7 @@ module Update.ProductPageListener exposing (..)
 
 import Dict exposing (get)
 import Http as H
-import HttpActions exposing (httpAddProduct, httpDeleteProduct, httpEditProduct, httpProducts, httpShowProduct)
+import HttpActions exposing (httpAddProduct, httpDeleteProduct, httpEditProduct, httpProducts, httpProductsP, httpShowProduct)
 import List exposing (filter, map)
 import Maybe exposing (withDefault)
 import Types exposing (Model(..), Msg(..), Operation(..), defMain)
@@ -10,9 +10,10 @@ import Utils exposing (formUrlencoded, isJust)
 import Validation.ProductsValidation exposing (checkDataFieldEditP, checkDataFieldInputP)
 
 productPageUpdate operation = case operation of
-    UpdateFilter s f fa i p data -> if fa
-        then (ProductsPage (Main s f False i p) Nothing, httpProducts s f fa i p)
-        else (ProductsPage (Main s f False i p) data, Cmd.none)
+    UpdateFilter s f fa sw i p data -> case (fa, sw) of
+        (True, _) -> (ProductsPage (Main s f False i p) Nothing, httpProducts s f fa i p)
+        (_, True) -> (ProductsPage (Main s f False i p) Nothing, httpProductsP s f fa i p)
+        (_, _) ->(ProductsPage (Main s f False i p) data, Cmd.none)
     Main s f fa i p-> (ProductsPage (Main s f fa i p) Nothing, httpProducts s f fa i p)
 
     Add dataFieldInput False Nothing -> (ProductsPage (Add dataFieldInput False Nothing) Nothing , Cmd.none)

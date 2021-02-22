@@ -9,7 +9,7 @@ import Types exposing (HttpMsg(..), Msg(..))
 import Utils exposing (formUrlencoded, isJust)
 import Xml.Decode as Encode
 
-urlBase = "http://localhost:8080/lab1coa-1.0-SNAPSHOT/"
+urlBase = "http://localhost:1099/lab1coa_war/"
 
 
 parameters sort itemsperpage page = case sort of
@@ -22,31 +22,29 @@ parameters sort itemsperpage page = case sort of
         , ("page", String.fromInt page)
         , ("sortBy", s)
         ]
-    --(Nothing, Just f) ->
-    --    [ ("itemsperpage", String.fromInt itemsperpage)
-    --    , ("page", String.fromInt page)
-    --    ] ++ filtersToTuples f
-    --
-    --(Just s, Just f) ->
-    --    [ ("itemsperpage", String.fromInt itemsperpage)
-    --    , ("page", String.fromInt page)
-    --    , ("sortBy", s)
-    --    ] ++ filtersToTuples f
 
 httpProducts sort filters filterApply elemsperpage page =
     let
         params = parameters sort elemsperpage page
-        filtersStr = if filterApply then filters else Nothing
     in
         Http.get
-            { url = urlBase ++ "products?" ++ formUrlencoded params ++ withDefault "" filters
+            { url = urlBase ++ "products?" ++ formUrlencoded params ++ withDefault "" (andThen (\s -> Just <| "&"++s) filters)
             , expect = Http.expectString (\res -> HttpAction <| HttpGetProducts res filters filterApply elemsperpage page)
             }
 
-httpOrganizations = Http.get
-    { url = urlBase ++ "organizations"
-    , expect = Http.expectString (\res -> HttpAction <| HttpGetOrganizations res)
-    }
+httpProductsP sort filters filterApply elemsperpage page = Http.get
+            { url = urlBase ++ "products-start-with?" ++ withDefault "" (andThen (\s -> Just <| "pattern=" ++ s) filters )
+            , expect = Http.expectString (\res -> HttpAction <| HttpGetProducts res filters filterApply elemsperpage page)
+            }
+
+httpOrganizations sort filters filterApply elemsperpage page =
+    let
+        params = parameters sort elemsperpage page
+    in
+        Http.get
+            { url = urlBase ++ "organizations?" ++ formUrlencoded params ++ withDefault "" (andThen (\s -> Just <| "&"++s) filters)
+            , expect = Http.expectString (\res -> HttpAction <| HttpGetOrganizations res filters filterApply elemsperpage page)
+            }
 
 httpAddProduct data =
         Http.request
@@ -55,6 +53,17 @@ httpAddProduct data =
             , url = urlBase ++ "products"
             , body = data
             , expect = Http.expectString  (\res -> HttpAction <| HttpAddProduct res)
+            , timeout = Nothing
+            , tracker = Nothing
+            }
+
+httpAddOrganization data =
+        Http.request
+            { method = "POST"
+            , headers = []
+            , url = urlBase ++ "organizations"
+            , body = data
+            , expect = Http.expectString  (\res -> HttpAction <| HttpAddOrganization res)
             , timeout = Nothing
             , tracker = Nothing
             }
@@ -70,6 +79,18 @@ httpDeleteProduct id =
             , tracker = Nothing
             }
 
+httpDeleteOrganization id =
+        Http.request
+            { method = "DELETE"
+            , headers = []
+            , url = urlBase ++ "organizations/" ++ String.fromInt id
+            , body = Http.emptyBody
+            , expect = Http.expectString  (\res -> HttpAction <| HttpDeleteOrganization res)
+            , timeout = Nothing
+            , tracker = Nothing
+            }
+
+
 httpEditProduct id data =
         Http.request
             { method = "PUT"
@@ -81,6 +102,17 @@ httpEditProduct id data =
             , tracker = Nothing
             }
 
+httpEditOrganization id data =
+        Http.request
+            { method = "PUT"
+            , headers = []
+            , url = urlBase ++ "organizations/" ++ String.fromInt id
+            , body = data
+            , expect = Http.expectString  (\res -> HttpAction <| HttpEditOrganization res)
+            , timeout = Nothing
+            , tracker = Nothing
+            }
+
 httpShowProduct id =
         Http.request
             { method = "GET"
@@ -88,6 +120,39 @@ httpShowProduct id =
             , url = urlBase ++ "products/" ++ String.fromInt id
             , body = Http.emptyBody
             , expect = Http.expectString  (\res -> HttpAction <| HttpShowProduct res)
+            , timeout = Nothing
+            , tracker = Nothing
+            }
+
+httpShowOrganization id =
+        Http.request
+            { method = "GET"
+            , headers = []
+            , url = urlBase ++ "organizations/" ++ String.fromInt id
+            , body = Http.emptyBody
+            , expect = Http.expectString  (\res -> HttpAction <| HttpShowOrganization res)
+            , timeout = Nothing
+            , tracker = Nothing
+            }
+
+httpPriceSum  =
+        Http.request
+            { method = "GET"
+            , headers = []
+            , url = urlBase ++ "price-sum"
+            , body = Http.emptyBody
+            , expect = Http.expectString  (\res -> HttpAction <| HttpPriceSum res)
+            , timeout = Nothing
+            , tracker = Nothing
+            }
+
+httpPriceAvg  =
+        Http.request
+            { method = "GET"
+            , headers = []
+            , url = urlBase ++ "price-avg"
+            , body = Http.emptyBody
+            , expect = Http.expectString  (\res -> HttpAction <| HttpPriceAvg res)
             , timeout = Nothing
             , tracker = Nothing
             }

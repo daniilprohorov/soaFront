@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48190c3a-ce29-458c-b944-c8b2cda2fbd7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Validation/OrganizationsValidation.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/HttpActions.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/HttpActions.elmi" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/HttpActions.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/HttpActions.elmo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Main.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Main.elmo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Organizations.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Organizations.elmi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Organizations.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Organizations.elmo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-Elements.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-Elements.elmi" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-Elements.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-Elements.elmo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-MainPage.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-MainPage.elmi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-MainPage.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-MainPage.elmo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-OrganizationsPage.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-OrganizationsPage.elmi" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-OrganizationsPage.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-OrganizationsPage.elmo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-ProductsPage.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Pages-ProductsPage.elmi" afterDir="false" />
@@ -18,15 +24,20 @@
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Utils.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Utils.elmi" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Utils.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Utils.elmo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/d.dat" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/d.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/Products.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Products.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/Organizations.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Organizations.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HttpActions.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/HttpActions.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/Elements.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Elements.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/MainPage.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/MainPage.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/OrganizationsPage.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/OrganizationsPage.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/ProductsPage.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/ProductsPage.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Types.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Types.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Update/HttpListener.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Update/HttpListener.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Update/MainPageListener.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Update/MainPageListener.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Update/MovePageListener.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Update/MovePageListener.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Update/OrganizationPageListener.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Update/OrganizationPageListener.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Update/ProductPageListener.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Update/ProductPageListener.elm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Update/Update.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Update/Update.elm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +93,14 @@
       <ElmTestRunConfiguration elm-folder="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/lab1soaFront/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.index.html" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
@@ -105,7 +124,11 @@
       <workItem from="1611108526660" duration="20000" />
       <workItem from="1611108813466" duration="15229000" />
       <workItem from="1611362240013" duration="1741000" />
-      <workItem from="1611365019125" duration="301000" />
+      <workItem from="1611365019125" duration="8911000" />
+      <workItem from="1611384278841" duration="12008000" />
+      <workItem from="1613164425677" duration="1101000" />
+      <workItem from="1613209077251" duration="5531000" />
+      <workItem from="1613934187035" duration="11011000" />
     </task>
     <task id="LOCAL-00001" summary="products page work and divide to pages">
       <created>1608221394161</created>
@@ -128,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608630858474</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Looks like products work, lol">
+      <created>1611365493452</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1611365493452</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,17 +180,18 @@
     <MESSAGE value="products page work and divide to pages" />
     <MESSAGE value="1234" />
     <MESSAGE value="not working have to change types" />
-    <option name="LAST_COMMIT_MESSAGE" value="not working have to change types" />
+    <MESSAGE value="Looks like products work, lol" />
+    <option name="LAST_COMMIT_MESSAGE" value="Looks like products work, lol" />
   </component>
   <component name="WindowStateProjectService">
     <state x="733" y="101" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608111526110">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="733" y="101" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1608111526110" />
-    <state x="820" y="-20" width="902" height="913" key="CommitChangelistDialog2" timestamp="1608630858359">
+    <state x="841" y="69" width="902" height="913" key="CommitChangelistDialog2" timestamp="1611365493307">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="820" y="-20" width="902" height="913" key="CommitChangelistDialog2/0.0.2560.1080@0.0.2560.1080" timestamp="1608630858359" />
+    <state x="841" y="69" width="902" height="913" key="CommitChangelistDialog2/0.0.2560.1080@0.0.2560.1080" timestamp="1611365493307" />
     <state x="1059" y="217" width="426" height="471" key="FileChooserDialogImpl" timestamp="1609672804991">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
@@ -181,10 +212,10 @@
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="1514" y="243" width="802" height="515" key="Vcs.Push.Dialog.v2/0.0.2560.1080@0.0.2560.1080" timestamp="1608201439117" />
-    <state x="870" y="-169" width="764" height="603" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1610750202353">
+    <state x="868" y="-201" width="764" height="603" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1613954947541">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="870" y="-169" width="764" height="603" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2560.1080@0.0.2560.1080" timestamp="1610750202353" />
+    <state x="868" y="-201" width="764" height="603" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2560.1080@0.0.2560.1080" timestamp="1613954947541" />
     <state x="1045" y="309" width="445" height="159" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608910464994">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
@@ -197,10 +228,10 @@
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="943" y="242" width="672" height="677" key="run.anything.popup/0.0.2560.1080@0.0.2560.1080" timestamp="1610739689674" />
-    <state x="943" y="222" width="672" height="678" key="search.everywhere.popup" timestamp="1611120496745">
+    <state x="943" y="222" width="672" height="678" key="search.everywhere.popup" timestamp="1611391497147">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="943" y="222" width="672" height="678" key="search.everywhere.popup/0.0.2560.1080@0.0.2560.1080" timestamp="1611120496745" />
+    <state x="943" y="222" width="672" height="678" key="search.everywhere.popup/0.0.2560.1080@0.0.2560.1080" timestamp="1611391497147" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

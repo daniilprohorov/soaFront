@@ -13,52 +13,79 @@ import Validation.Fields exposing (validateName)
 --    Just name -> PageAction <| Add (PrdInp {product | name = Just name}) False Nothing
 --    Nothing   -> PageAction <| Add (PrdInp product) False (Just "Name is not valid")
 
-updateNameI product str = PageAction <| Add (PrdInp {product | name = Just str}) False Nothing
-updateXI product str = PageAction <| Add (PrdInp {product | x = Just str}) False Nothing
-updateYI product str = PageAction <| Add (PrdInp {product | y = Just str}) False Nothing
-updatePriceI product str = PageAction <| Add (PrdInp {product | price = Just str}) False Nothing
-updateUnitOfMeasureI product str = PageAction <| Add (PrdInp {product | unitofmeasure = Just str}) False Nothing
-updateManufacturerI product str = PageAction <| Add (PrdInp {product | manufacturer = Just str}) False Nothing
+updatePNameI product str = PageAction <| Add (PrdInp {product | name = Just str}) False Nothing
+updatePXI product str = PageAction <| Add (PrdInp {product | x = Just str}) False Nothing
+updatePYI product str = PageAction <| Add (PrdInp {product | y = Just str}) False Nothing
+updatePPriceI product str = PageAction <| Add (PrdInp {product | price = Just str}) False Nothing
+updatePUnitOfMeasureI product str = PageAction <| Add (PrdInp {product | unitofmeasure = Just str}) False Nothing
+updatePManufacturerI product str = PageAction <| Add (PrdInp {product | manufacturer = Just str}) False Nothing
+
+updateONameI organization str = PageAction <| Add (OrgInp {organization | name = Just str}) False Nothing
+updateOFullNameI organization str = PageAction <| Add (OrgInp {organization | fullname = Just str}) False Nothing
+updateOEmployeesCountI organizatoin str = PageAction <| Add (OrgInp {organizatoin | employeescount = Just str}) False Nothing
+
 
 
 
 inputProductEl productInput =
     row [ centerX, spacing 16 ]
         [ Input.text [width <| px 100]
-            { onChange=updateNameI productInput
+            { onChange=updatePNameI productInput
             , text = withDefault "" productInput.name
             , placeholder = Nothing
             , label = Input.labelAbove [center] (text "Name")
             }
         , Input.text [width <| px 50]
-            { onChange=updateXI productInput
+            { onChange=updatePXI productInput
             , text = withDefault "" productInput.x
             , placeholder = Nothing
             , label = Input.labelAbove [center] (text "X")
             }
         , Input.text [width <| px 50]
-            { onChange=updateYI productInput
+            { onChange=updatePYI productInput
             , text = withDefault "" productInput.y
             , placeholder = Nothing
             , label = Input.labelAbove [center] (text "Y")
             }
         , Input.text [width <| px 100]
-            { onChange=updatePriceI productInput
+            { onChange=updatePPriceI productInput
             , text = withDefault "" productInput.price
             , placeholder = Nothing
             , label = Input.labelAbove [center] (text "Price")
             }
         , Input.text [width <| px 150]
-            { onChange=updateUnitOfMeasureI productInput
+            { onChange=updatePUnitOfMeasureI productInput
             , text = withDefault "" productInput.unitofmeasure
             , placeholder = Nothing
             , label = Input.labelAbove [center] (text "Unit of measure")
             }
         , Input.text [width <| px 150]
-            { onChange=updateManufacturerI productInput
+            { onChange=updatePManufacturerI productInput
             , text = withDefault "" productInput.manufacturer
             , placeholder = Nothing
             , label = Input.labelAbove [center] (text "Manufacturer")
+            }
+        ]
+
+inputOrganizationEl organizationInput =
+    row [ centerX, spacing 16 ]
+        [ Input.text [width <| px 100]
+            { onChange=updateONameI organizationInput
+            , text = withDefault "" organizationInput.name
+            , placeholder = Nothing
+            , label = Input.labelAbove [center] (text "Name")
+            }
+        , Input.text [width <| px 200]
+            { onChange=updateOFullNameI organizationInput
+            , text = withDefault "" organizationInput.fullname
+            , placeholder = Nothing
+            , label = Input.labelAbove [center] (text "Fullname")
+            }
+        , Input.text [width <| px 50]
+            { onChange=updateOEmployeesCountI organizationInput
+            , text = withDefault "" organizationInput.employeescount
+            , placeholder = Nothing
+            , label = Input.labelAbove [center] (text "Employeescount")
             }
         ]
 
@@ -71,7 +98,7 @@ updateIdS str = case toInt str of
     Just i -> PageAction <| (ShowById i ) False Nothing Nothing
     Nothing -> PageAction <| (ShowById 0 ) False (Just "input is not valid") Nothing
 
-deleteProductEl id =
+deleteEl id =
     row [ centerX, spacing 16 ]
         [ Input.text [width <| px 100]
             { onChange=updateIdD
@@ -81,7 +108,7 @@ deleteProductEl id =
             }
         ]
 
-showByIdProductEl id =
+showByIdEl id =
     row [ centerX, spacing 16 ]
         [ Input.text [width <| px 100]
             { onChange=updateIdS
@@ -91,60 +118,96 @@ showByIdProductEl id =
             }
         ]
 
-updateIdE str product = case toInt str of
+updatePIdE str product = case toInt str of
     Just i -> PageAction <| Edit i (PrdInp product) False Nothing
     Nothing -> PageAction <| Edit 0 (PrdInp product) False (Just "input is not valid")
 
-updateNameE id product str = PageAction <| Edit id (PrdInp {product | name = Just str}) False Nothing
-updateXE id product str = PageAction <| Edit id (PrdInp {product | x = Just str}) False Nothing
-updateYE id product str = PageAction <| Edit id (PrdInp {product | y = Just str}) False Nothing
-updatePriceE id product str = PageAction <| Edit id (PrdInp {product | price = Just str}) False Nothing
-updateUnitOfMeasureE id product str = PageAction <| Edit id (PrdInp {product | unitofmeasure = Just str}) False Nothing
-updateManufacturerE id product str = PageAction <| Edit id (PrdInp {product | manufacturer = Just str}) False Nothing
+updateOIdE str organization = case toInt str of
+    Just i -> PageAction <| Edit i (OrgInp organization) False Nothing
+    Nothing -> PageAction <| Edit 0 (OrgInp organization) False (Just "input is not valid")
+
+updatePNameE id product str = PageAction <| Edit id (PrdInp {product | name = Just str}) False Nothing
+updatePXE id product str = PageAction <| Edit id (PrdInp {product | x = Just str}) False Nothing
+updatePYE id product str = PageAction <| Edit id (PrdInp {product | y = Just str}) False Nothing
+updatePPriceE id product str = PageAction <| Edit id (PrdInp {product | price = Just str}) False Nothing
+updatePUnitOfMeasureE id product str = PageAction <| Edit id (PrdInp {product | unitofmeasure = Just str}) False Nothing
+updatePManufacturerE id product str = PageAction <| Edit id (PrdInp {product | manufacturer = Just str}) False Nothing
+
+updateONameE id organization str = PageAction <| Edit id (OrgInp {organization | name = Just str}) False Nothing
+updateOFullNameE id organization str = PageAction <| Edit id (OrgInp {organization | fullname = Just str}) False Nothing
+updateOEmployeesCountNameE id organization str = PageAction <| Edit id (OrgInp {organization | employeescount = Just str}) False Nothing
 
 editProductEl id productInput =
     row [ centerX, spacing 16 ]
         [ Input.text [width <| px 100]
-            { onChange=(\i -> updateIdE i productInput)
+            { onChange=(\i -> updatePIdE i productInput)
             , text = String.fromInt id
             , placeholder = Nothing
             , label = Input.labelAbove [center] (text "Id")
             }
         , Input.text [width <| px 100]
-            { onChange=(\s -> updateNameE id productInput s)
+            { onChange=(\s -> updatePNameE id productInput s)
             , text = withDefault "" productInput.name
             , placeholder = Nothing
             , label = Input.labelAbove [center] (text "Name")
             }
         , Input.text [width <| px 50]
-            { onChange=updateXE id productInput
+            { onChange=updatePXE id productInput
             , text = withDefault "" productInput.x
             , placeholder = Nothing
             , label = Input.labelAbove [center] (text "X")
             }
         , Input.text [width <| px 50]
-            { onChange=updateYE id productInput
+            { onChange=updatePYE id productInput
             , text = withDefault "" productInput.y
             , placeholder = Nothing
             , label = Input.labelAbove [center] (text "Y")
             }
         , Input.text [width <| px 100]
-            { onChange=updatePriceE id productInput
+            { onChange=updatePPriceE id productInput
             , text = withDefault "" productInput.price
             , placeholder = Nothing
             , label = Input.labelAbove [center] (text "Price")
             }
         , Input.text [width <| px 150]
-            { onChange=updateUnitOfMeasureE id productInput
+            { onChange=updatePUnitOfMeasureE id productInput
             , text = withDefault "" productInput.unitofmeasure
             , placeholder = Nothing
             , label = Input.labelAbove [center] (text "Unit of measure")
             }
         , Input.text [width <| px 150]
-            { onChange=updateManufacturerE id productInput
+            { onChange=updatePManufacturerE id productInput
             , text = withDefault "" productInput.manufacturer
             , placeholder = Nothing
             , label = Input.labelAbove [center] (text "Manufacturer")
+            }
+        ]
+
+editOrganizationEl id organizationInput =
+    row [ centerX, spacing 16 ]
+        [ Input.text [width <| px 100]
+            { onChange=(\i -> updateOIdE i organizationInput)
+            , text = String.fromInt id
+            , placeholder = Nothing
+            , label = Input.labelAbove [center] (text "Id")
+            }
+        , Input.text [width <| px 100]
+            { onChange=(\s -> updateONameE id organizationInput s)
+            , text = withDefault "" organizationInput.name
+            , placeholder = Nothing
+            , label = Input.labelAbove [center] (text "Name")
+            }
+        , Input.text [width <| px 100]
+            { onChange=(\s -> updateOFullNameE id organizationInput s)
+            , text = withDefault "" organizationInput.fullname
+            , placeholder = Nothing
+            , label = Input.labelAbove [center] (text "FullName")
+            }
+        , Input.text [width <| px 100]
+            { onChange=(\s -> updateOEmployeesCountNameE id organizationInput s)
+            , text = withDefault "" organizationInput.employeescount
+            , placeholder = Nothing
+            , label = Input.labelAbove [center] (text "Employees count")
             }
         ]
 

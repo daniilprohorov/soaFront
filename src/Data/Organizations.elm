@@ -14,12 +14,12 @@ type alias Organization =
     , employeescount : Int
     }
 
+
 type alias OrganizationInput =
     { name : Maybe String
     , fullname : Maybe String
     , employeescount : Maybe String
     }
-
 organizationInputDef = OrganizationInput Nothing Nothing Nothing
 
 type alias Organizations =
@@ -76,32 +76,8 @@ buttonStyle =
     , centerX
     ]
 
---addOrganizationsView organizations = table [spacing 10]
---    { data = organizations
---    , columns =
---        [
---            { header = text ""
---            , width = fill
---            , view = \_ -> button buttonStyle {onPress = Just <| PageAction Add   , label = text "+"}
---            }
---        ,
---            { header = text "name"
---            , width = fill
---            , view = \organization -> Element.Input.text [] {onChange = \(s) -> AddOrganizationName s, }
---            }
---        ,
---            { header = text "fullname"
---            , width = fill
---            , view = \organization -> text organization.fullname
---            }
---        ,
---            { header = text "employeescount"
---            , width = fill
---            , view = \organization -> text <| toString organization.employeescount
---            }
---        ]
---    }
 
+getOrganization str = run organizationDecoder str
 
 getOrganizations : String -> Result String (List Organization)
 getOrganizations str =
