@@ -4,14 +4,25 @@ import Dict exposing (get)
 import Http as H
 import HttpActions exposing (httpAddOrganization, httpDeleteOrganization, httpEditOrganization, httpOrganizations, httpProducts, httpShowOrganization)
 import List exposing (filter, map)
-import Maybe exposing (withDefault)
+import Maybe exposing (andThen, withDefault)
 import Types exposing (Model(..), Operation(..), defMain)
-import Utils exposing (formUrlencoded, isJust)
+import Utils exposing (formUrlencoded, isJust, xmlEncoder)
+import Validation.Fields exposing (validateFilter)
 import Validation.OrganizationsValidation exposing (checkDataFieldEditO, checkDataFieldInputO)
 
 organizationPageUpdate operation = case operation of
     UpdateFilter s f fa sw i p data -> if fa
-        then (OrganizationsPage (Main s f False i p) Nothing, httpOrganizations s f fa i p)
+        then
+            let
+                maybeFilter = andThen validateFilter f
+            in
+                case maybeFilter of
+                    Nothing ->
+                        let
+                            filterV = Just "INPUT: Letters, digits, =, -, &, ."
+                        in
+                            (OrganizationsPage (Main s filterV False i p) Nothing, httpOrganizations s filterV False i p)
+                    just -> (OrganizationsPage (Main s just False i p) Nothing, httpOrganizations s just fa i p)
         else (OrganizationsPage (Main s f False i p) data, Cmd.none)
     Main s f fa i p-> (OrganizationsPage (Main s f fa i p) Nothing, httpOrganizations s f fa i p)
 
@@ -20,7 +31,7 @@ organizationPageUpdate operation = case operation of
         Ok dataDict ->
             let
                 fieldFromDict key = (key, withDefault "" <| get key dataDict)
-                data = formUrlencoded
+                data = xmlEncoder
                     [ fieldFromDict "name"
                     , fieldFromDict "fullname"
                     , fieldFromDict "employeescount"

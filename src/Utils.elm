@@ -42,6 +42,17 @@ formUrlencoded object =
             )
         |> String.join "&"
 
+xmlEncoder : List ( String, String ) -> String
+xmlEncoder object =
+    object
+        |> List.map
+            (\( name, value ) ->
+                    "<" ++ name ++ ">"
+                    ++ value
+                    ++ "</" ++ name ++ ">"
+            )
+        |> String.join "" |> (\s -> "<root>" ++ s ++ "</root>")
+
 errorToString : Http.Error -> String
 errorToString error =
     case error of

@@ -1,10 +1,10 @@
 module Update.HttpListener exposing (..)
 
-import DataField exposing (DataField(..))
+import DataField exposing (DataField(..), DataFieldInput(..))
 import Debug exposing (toString)
 import HttpActions exposing (httpOrganizations, httpPriceAvg, httpPriceSum, httpProducts)
-import Organizations exposing (getOrganization, getOrganizations)
-import Products exposing (getProduct, getProducts)
+import Organizations exposing (getOrganization, getOrganizations, organizationInputDef)
+import Products exposing (getProduct, getProducts, productInputDef)
 import Types exposing (HttpMsg(..), Model(..), Operation(..), defMain)
 import Utils exposing (errorToString)
 
@@ -31,8 +31,12 @@ httpUpdate httpMsg model = case httpMsg of
           in
               (OrganizationsPage (Main Nothing filters filterApply elemsperpage page) organizations, Cmd.none)
 
-    HttpAddProduct result -> (ProductsPage defMain Nothing, httpProducts Nothing Nothing False 20 1 )
-    HttpAddOrganization result -> (OrganizationsPage defMain Nothing, httpOrganizations Nothing Nothing False 20 1 )
+    HttpAddProduct result -> case result of
+        Ok fullText -> ( ProductsPage defMain Nothing, httpProducts Nothing Nothing False 20 1 )
+        Err e -> (ProductsPage (Add (PrdInp productInputDef) False (Just "SERVER ERROR. Check manufacturer")) Nothing, Cmd.none )
+    HttpAddOrganization result -> case result of
+        Ok fullText -> (OrganizationsPage defMain Nothing, httpOrganizations Nothing Nothing False 20 1 )
+        Err e -> (OrganizationsPage (Add (OrgInp organizationInputDef) False (Just "SERVER ERROR")) Nothing, Cmd.none )
 
     HttpDeleteProduct result -> (ProductsPage defMain Nothing, httpProducts Nothing Nothing False 20 1 )
     HttpDeleteOrganization result -> (OrganizationsPage defMain Nothing, httpOrganizations Nothing Nothing False 20 1 )

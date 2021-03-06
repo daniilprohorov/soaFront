@@ -41,8 +41,8 @@ mainProducts data sort filter filterApply elemsPerPage page = case data of
                 , placeholder = Nothing
                 , label = Input.labelAbove [center] (text "FILTER VALUE")
                 }
-            , button buttonStyle {onPress=Just <|   PageAction (UpdateFilter sort filter True False elemsPerPage page data), label=text"APPLY"}
-            , button buttonStyle {onPress=Just <|   PageAction (UpdateFilter sort filter False True elemsPerPage page data), label=text"Start With"}
+            , button buttonStyle {onPress=Just <| PageAction (UpdateFilter sort filter True False elemsPerPage page data), label=text"APPLY"}
+            , button buttonStyle {onPress=Just <| PageAction (UpdateFilter sort filter False True elemsPerPage page data), label=text"Start With"}
             ]
         , button buttonStyle {onPress=Just <| addProductMsgDef, label=text "Add Product"}
         , button buttonStyle {onPress=Just <| PageAction (DeleteById 0 False Nothing), label=text "Delete by Id"}
@@ -78,7 +78,7 @@ mainProducts data sort filter filterApply elemsPerPage page = case data of
         , button buttonStyle {onPress=Just <| addProductMsgDef, label=text "Add Product"}
         , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
         ]
-        [ paragraph [centerX] [ text "wait" ]
+        [ paragraph [centerX] [ text "ERROR" ]
         ]
 
 addProduct dataFieldInput send fail = case (dataFieldInput, send, fail) of

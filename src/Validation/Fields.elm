@@ -31,3 +31,9 @@ validateUnitOfMeasure str = case str of
     "centimeters" -> Just str
     _ -> Nothing
 
+validateFilter str = case str of
+    "" -> Nothing
+    s  -> if and <| map (\c -> contains (fromChar c) (letters ++ digits ++ "&=-.")) <| toList s
+        then Just s
+        else Nothing
+

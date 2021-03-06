@@ -75,7 +75,7 @@ mainOrganizations data sort filter filterApply elemsPerPage page = case data of
         , button buttonStyle {onPress=Just <| addOrganizationMsgDef, label=text "Add Organization"}
         , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
         ]
-        [ paragraph [centerX] [ text "wait" ]
+        [ paragraph [centerX] [ text "ERROR" ]
         ]
 
 addOrganization dataFieldInput send fail = case (dataFieldInput, send, fail) of

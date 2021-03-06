@@ -26,23 +26,35 @@ parameters sort itemsperpage page = case sort of
 httpProducts sort filters filterApply elemsperpage page =
     let
         params = parameters sort elemsperpage page
+        filterStr = if filterApply
+            then withDefault "" (andThen (\s -> Just <| "&"++s ) filters)
+            else ""
     in
         Http.get
-            { url = urlBase ++ "products?" ++ formUrlencoded params ++ withDefault "" (andThen (\s -> Just <| "&"++s) filters)
+            { url = urlBase ++ "products?" ++ formUrlencoded params ++ filterStr
             , expect = Http.expectString (\res -> HttpAction <| HttpGetProducts res filters filterApply elemsperpage page)
             }
 
-httpProductsP sort filters filterApply elemsperpage page = Http.get
-            { url = urlBase ++ "products-start-with?" ++ withDefault "" (andThen (\s -> Just <| "pattern=" ++ s) filters )
+httpProductsP sort filters filterApply elemsperpage page =
+    let
+        filterStr = if filterApply
+            then withDefault "" (andThen (\s -> Just <| "&"++s ) filters)
+            else ""
+    in
+        Http.get
+            { url = urlBase ++ "products-start-with?" ++ filterStr
             , expect = Http.expectString (\res -> HttpAction <| HttpGetProducts res filters filterApply elemsperpage page)
             }
 
 httpOrganizations sort filters filterApply elemsperpage page =
     let
         params = parameters sort elemsperpage page
+        filterStr = if filterApply
+            then withDefault "" (andThen (\s -> Just <| "&"++s ) filters)
+            else ""
     in
         Http.get
-            { url = urlBase ++ "organizations?" ++ formUrlencoded params ++ withDefault "" (andThen (\s -> Just <| "&"++s) filters)
+            { url = urlBase ++ "organizations?" ++ formUrlencoded params ++ filterStr
             , expect = Http.expectString (\res -> HttpAction <| HttpGetOrganizations res filters filterApply elemsperpage page)
             }
 
