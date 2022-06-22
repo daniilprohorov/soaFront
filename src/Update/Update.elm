@@ -4,8 +4,7 @@ import Types exposing (Model(..), Msg(..))
 import Update.HttpListener exposing (httpUpdate)
 import Update.MainPageListener exposing (mainPageUpdate)
 import Update.MovePageListener exposing (moveUpdate)
-import Update.OrganizationPageListener exposing (organizationPageUpdate)
-import Update.ProductPageListener exposing (productPageUpdate)
+import Update.VehiclePageListener exposing (productPageUpdate)
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model = case msg of
@@ -14,8 +13,7 @@ update msg model = case msg of
     HttpAction httpMsg -> httpUpdate httpMsg model
 
 pageAction model operation = case model of
-    ProductsPage _ _ -> productPageUpdate operation
-    OrganizationsPage _ _ -> organizationPageUpdate operation
+    VehiclesPage _ _ -> productPageUpdate operation
     MainPage s a -> mainPageUpdate s a
 
 

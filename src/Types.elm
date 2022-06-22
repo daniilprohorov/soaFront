@@ -4,16 +4,15 @@ import DataField exposing (DataField, DataFieldInput(..))
 import Http
 
 import Organizations exposing (Organization, organizationInputDef)
-import Products exposing (Product, ProductInput, productInputDef)
+import Vehicles exposing (Vehicle, VehicleInput, vehicleInputDef)
 
 type Model
   = MainPage (Maybe String) (Maybe String)
-  | ProductsPage Operation (Maybe DataField)
-  | OrganizationsPage Operation (Maybe DataField)
+  | VehiclesPage Operation (Maybe DataField)
 
 type Msg = Go ToPage | PageAction Operation | HttpAction HttpMsg
 
-type ToPage = ToMainPage | ToProductsPage | ToOrganizationsPage
+type ToPage = ToMainPage | ToVehiclesPage
 
 type Operation
     = Main (Maybe String) (Maybe String) Bool Int Int -- sort filter filterApply itemsperpage page
@@ -25,22 +24,15 @@ type Operation
 --type ActionType = Start | Store DataFieldInput | Check DataFieldInput | Fail String | Send DataFieldInput
 
 type HttpMsg
-    = HttpGetProducts (Result Http.Error String) (Maybe String) Bool Int Int -- Data, filter, filterApply, Count Per page, page
-    | HttpGetOrganizations (Result Http.Error String) (Maybe String) Bool Int Int
-    | HttpAddProduct (Result Http.Error String)
-    | HttpAddOrganization (Result Http.Error String)
-    | HttpDeleteProduct (Result Http.Error String)
-    | HttpDeleteOrganization (Result Http.Error String)
-    | HttpShowProduct (Result Http.Error String)
-    | HttpShowOrganization (Result Http.Error String)
-    | HttpEditProduct (Result Http.Error String)
-    | HttpEditOrganization (Result Http.Error String)
+    = HttpGetVehicles (Result Http.Error String) (Maybe String) Bool Int Int -- Data, filter, filterApply, Count Per page, page
+    | HttpAddVehicle (Result Http.Error String)
+    | HttpDeleteVehicle (Result Http.Error String)
+    | HttpShowVehicle (Result Http.Error String)
+    | HttpEditVehicle (Result Http.Error String)
     | HttpPriceSum (Result Http.Error String)
     | HttpPriceAvg (Result Http.Error String)
 
 
-addProductMsgDef = PageAction (Add (PrdInp productInputDef) False Nothing)
-
-addOrganizationMsgDef = PageAction (Add (OrgInp organizationInputDef) False Nothing)
+addProductMsgDef = PageAction (Add (VehInp vehicleInputDef) False Nothing)
 
 defMain = Main Nothing Nothing False 20 1

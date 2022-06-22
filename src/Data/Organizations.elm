@@ -86,9 +86,9 @@ getOrganizations str =
   in
       case organizationsList of
           Err msg -> Err msg
-          Ok listOfProducts ->
+          Ok listOfvehicles ->
               let
                   listOfProduct : Result String (List Organization)
-                  listOfProduct = traverse (run organizationDecoder) (listOfProducts.organizations)
+                  listOfProduct = traverse (run organizationDecoder) (listOfvehicles.organizations)
               in
                   listOfProduct

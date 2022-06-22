@@ -24,11 +24,18 @@ validateFloat str = case str of
         then Just s
         else Nothing
 
-validateUnitOfMeasure str = case str of
-    "pcs" -> Just str
-    "kilograms" -> Just str
-    "square_meters" -> Just str
-    "centimeters" -> Just str
+validateVehicleType str = case str of
+    "CAR" -> Just str
+    "SUBMARINE" -> Just str
+    "SHIP" -> Just str
+    "BICYCLE" -> Just str
+    "HOVERBOARD" -> Just str
+    _ -> Nothing
+
+validateFuelType str = case str of
+    "ELECTRICITY" -> Just str
+    "NUCLEAR" -> Just str
+    "PLASMA" -> Just str
     _ -> Nothing
 
 validateFilter str = case str of

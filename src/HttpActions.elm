@@ -9,7 +9,7 @@ import Types exposing (HttpMsg(..), Msg(..))
 import Utils exposing (formUrlencoded, isJust)
 import Xml.Decode as Encode
 
-urlBase = "http://localhost:1099/lab1coa_war/"
+urlBase = "http://localhost:8080/api/"
 
 
 parameters sort itemsperpage page = case sort of
@@ -23,7 +23,7 @@ parameters sort itemsperpage page = case sort of
         , ("sortBy", s)
         ]
 
-httpProducts sort filters filterApply elemsperpage page =
+httpVehicles sort filters filterApply elemsperpage page =
     let
         params = parameters sort elemsperpage page
         filterStr = if filterApply
@@ -31,11 +31,11 @@ httpProducts sort filters filterApply elemsperpage page =
             else ""
     in
         Http.get
-            { url = urlBase ++ "products?" ++ formUrlencoded params ++ filterStr
-            , expect = Http.expectString (\res -> HttpAction <| HttpGetProducts res filters filterApply elemsperpage page)
+            { url = urlBase ++ "vehicles" -- ++ formUrlencoded params ++ filterStr
+            , expect = Http.expectString (\res -> HttpAction <| HttpGetVehicles res filters filterApply elemsperpage page)
             }
 
-httpProductsP sort filters filterApply elemsperpage page =
+httpVehiclesP sort filters filterApply elemsperpage page =
     let
         filterStr = if filterApply
             then withDefault "" (andThen (\s -> Just <| "&"++s ) filters)
@@ -43,109 +43,55 @@ httpProductsP sort filters filterApply elemsperpage page =
     in
         Http.get
             { url = urlBase ++ "products-start-with?" ++ filterStr
-            , expect = Http.expectString (\res -> HttpAction <| HttpGetProducts res filters filterApply elemsperpage page)
+            , expect = Http.expectString (\res -> HttpAction <| HttpGetVehicles res filters filterApply elemsperpage page)
             }
 
-httpOrganizations sort filters filterApply elemsperpage page =
-    let
-        params = parameters sort elemsperpage page
-        filterStr = if filterApply
-            then withDefault "" (andThen (\s -> Just <| "&"++s ) filters)
-            else ""
-    in
-        Http.get
-            { url = urlBase ++ "organizations?" ++ formUrlencoded params ++ filterStr
-            , expect = Http.expectString (\res -> HttpAction <| HttpGetOrganizations res filters filterApply elemsperpage page)
-            }
-
-httpAddProduct data =
+httpAddVehicle data =
         Http.request
             { method = "POST"
             , headers = []
-            , url = urlBase ++ "products"
+            , url = urlBase ++ "vehicles"
             , body = data
-            , expect = Http.expectString  (\res -> HttpAction <| HttpAddProduct res)
+            , expect = Http.expectString  (\res -> HttpAction <| HttpAddVehicle res)
             , timeout = Nothing
             , tracker = Nothing
             }
 
-httpAddOrganization data =
-        Http.request
-            { method = "POST"
-            , headers = []
-            , url = urlBase ++ "organizations"
-            , body = data
-            , expect = Http.expectString  (\res -> HttpAction <| HttpAddOrganization res)
-            , timeout = Nothing
-            , tracker = Nothing
-            }
 
-httpDeleteProduct id =
+httpDeleteVehicle id =
         Http.request
             { method = "DELETE"
             , headers = []
-            , url = urlBase ++ "products/" ++ String.fromInt id
+            , url = urlBase ++ "vehicles/" ++ String.fromInt id
             , body = Http.emptyBody
-            , expect = Http.expectString  (\res -> HttpAction <| HttpDeleteProduct res)
-            , timeout = Nothing
-            , tracker = Nothing
-            }
-
-httpDeleteOrganization id =
-        Http.request
-            { method = "DELETE"
-            , headers = []
-            , url = urlBase ++ "organizations/" ++ String.fromInt id
-            , body = Http.emptyBody
-            , expect = Http.expectString  (\res -> HttpAction <| HttpDeleteOrganization res)
+            , expect = Http.expectString  (\res -> HttpAction <| HttpDeleteVehicle res)
             , timeout = Nothing
             , tracker = Nothing
             }
 
 
-httpEditProduct id data =
+httpEditVehicle id data =
         Http.request
             { method = "PUT"
             , headers = []
-            , url = urlBase ++ "products/" ++ String.fromInt id
+            , url = urlBase ++ "vehicles/" ++ String.fromInt id
             , body = data
-            , expect = Http.expectString  (\res -> HttpAction <| HttpEditProduct res)
+            , expect = Http.expectString  (\res -> HttpAction <| HttpEditVehicle res)
             , timeout = Nothing
             , tracker = Nothing
             }
 
-httpEditOrganization id data =
-        Http.request
-            { method = "PUT"
-            , headers = []
-            , url = urlBase ++ "organizations/" ++ String.fromInt id
-            , body = data
-            , expect = Http.expectString  (\res -> HttpAction <| HttpEditOrganization res)
-            , timeout = Nothing
-            , tracker = Nothing
-            }
-
-httpShowProduct id =
+httpShowVehicle id =
         Http.request
             { method = "GET"
             , headers = []
-            , url = urlBase ++ "products/" ++ String.fromInt id
+            , url = urlBase ++ "vehicles/" ++ String.fromInt id
             , body = Http.emptyBody
-            , expect = Http.expectString  (\res -> HttpAction <| HttpShowProduct res)
+            , expect = Http.expectString  (\res -> HttpAction <| HttpShowVehicle res)
             , timeout = Nothing
             , tracker = Nothing
             }
 
-httpShowOrganization id =
-        Http.request
-            { method = "GET"
-            , headers = []
-            , url = urlBase ++ "organizations/" ++ String.fromInt id
-            , body = Http.emptyBody
-            , expect = Http.expectString  (\res -> HttpAction <| HttpShowOrganization res)
-            , timeout = Nothing
-            , tracker = Nothing
-            }
 
 httpPriceSum  =
         Http.request

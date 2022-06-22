@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="48190c3a-ce29-458c-b944-c8b2cda2fbd7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Validation/OrganizationsValidation.elm" afterDir="false" />
+    <list default="true" id="48190c3a-ce29-458c-b944-c8b2cda2fbd7" name="Default Changelist" comment="Looks like products work, lol">
+      <change afterPath="$PROJECT_DIR$/src/Data/Vehicles.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/DataField.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/DataField.elmi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/DataField.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/DataField.elmo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/HttpActions.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/HttpActions.elmi" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/HttpActions.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/HttpActions.elmo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Main.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Main.elmo" afterDir="false" />
@@ -23,21 +25,30 @@
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Types.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Types.elmo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Utils.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Utils.elmi" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Utils.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Utils.elmo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Validation-Fields.elmi" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Validation-Fields.elmi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/Validation-Fields.elmo" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Validation-Fields.elmo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/d.dat" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/d.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/i.dat" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/i.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm-stuff/0.19.1/o.dat" beforeDir="false" afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/o.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm.json" beforeDir="false" afterPath="$PROJECT_DIR$/elm.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/DataField.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/DataField.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Data/Organizations.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Organizations.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/Products.elm" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HttpActions.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/HttpActions.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/Elements.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Elements.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pages/MainPage.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/MainPage.elm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/OrganizationsPage.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/OrganizationsPage.elm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/ProductsPage.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/ProductsPage.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/OrganizationsPage.elm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/ProductsPage.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/VehiclesPage.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Types.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Types.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Update/HttpListener.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Update/HttpListener.elm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Update/MainPageListener.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Update/MainPageListener.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Update/MovePageListener.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Update/MovePageListener.elm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Update/OrganizationPageListener.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Update/OrganizationPageListener.elm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Update/ProductPageListener.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Update/ProductPageListener.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Update/OrganizationPageListener.elm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Update/ProductPageListener.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Update/VehiclePageListener.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Update/Update.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Update/Update.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Validation/Fields.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validation/Fields.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Validation/OrganizationsValidation.elm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Validation/ProductsValidation.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validation/VehiclesValidation.elm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +59,7 @@
     <elmProjects>
       <project path="$PROJECT_DIR$/elm.json" />
     </elmProjects>
-    <settings elmCompilerPath="/usr/bin/elm" elmFormatPath="null" elmTestPath="null" isElmFormatOnSaveEnabled="false" />
+    <settings elmCompilerPath="C:\Program Files (x86)\Elm\0.19.1\bin\elm.exe" elmFormatPath="null" elmTestPath="null" isElmFormatOnSaveEnabled="false" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -61,6 +72,17 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="1lmkozDLdCH6Tu51GcMKyht8XCe" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -71,10 +93,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/elm.json" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="org.elm.workspace.PROJECT_DISCOVERY" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -90,7 +112,7 @@
   </component>
   <component name="RunManager">
     <configuration default="true" type="ELM_TEST_RUN_CONFIGURATION" factoryName="Elm Test configuration factory">
-      <ElmTestRunConfiguration elm-folder="$PROJECT_DIR$" />
+      <ElmTestRunConfiguration elm-folder="C:\Users\danii\WSPrj\soaFront" />
       <method v="2" />
     </configuration>
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/lab1soaFront/index.html" useBuiltInWebServerPort="true">
@@ -102,7 +124,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -129,6 +151,11 @@
       <workItem from="1613164425677" duration="1101000" />
       <workItem from="1613209077251" duration="5531000" />
       <workItem from="1613934187035" duration="11011000" />
+      <workItem from="1655677428660" duration="215000" />
+      <workItem from="1655677660728" duration="296000" />
+      <workItem from="1655677977101" duration="46000" />
+      <workItem from="1655678037985" duration="719000" />
+      <workItem from="1655843737738" duration="13239000" />
     </task>
     <task id="LOCAL-00001" summary="products page work and divide to pages">
       <created>1608221394161</created>
@@ -162,7 +189,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -174,7 +201,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="products page work and divide to pages" />
@@ -182,56 +208,6 @@
     <MESSAGE value="not working have to change types" />
     <MESSAGE value="Looks like products work, lol" />
     <option name="LAST_COMMIT_MESSAGE" value="Looks like products work, lol" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="733" y="101" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608111526110">
-      <screen x="0" y="0" width="2560" height="1080" />
-    </state>
-    <state x="733" y="101" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1608111526110" />
-    <state x="841" y="69" width="902" height="913" key="CommitChangelistDialog2" timestamp="1611365493307">
-      <screen x="0" y="0" width="2560" height="1080" />
-    </state>
-    <state x="841" y="69" width="902" height="913" key="CommitChangelistDialog2/0.0.2560.1080@0.0.2560.1080" timestamp="1611365493307" />
-    <state x="1059" y="217" width="426" height="471" key="FileChooserDialogImpl" timestamp="1609672804991">
-      <screen x="0" y="0" width="2560" height="1080" />
-    </state>
-    <state x="1059" y="217" width="426" height="471" key="FileChooserDialogImpl/0.0.2560.1080@0.0.2560.1080" timestamp="1609672804991" />
-    <state x="862" y="244" width="826" height="514" key="IDE.errors.dialog" timestamp="1608122127177">
-      <screen x="0" y="0" width="2560" height="1080" />
-    </state>
-    <state x="862" y="244" width="826" height="514" key="IDE.errors.dialog/0.0.2560.1080@0.0.2560.1080" timestamp="1608122127177" />
-    <state x="250" y="60" width="2050" height="881" key="MergeDialog" timestamp="1608910479132">
-      <screen x="0" y="0" width="2560" height="1080" />
-    </state>
-    <state x="250" y="60" width="2050" height="881" key="MergeDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1608910479132" />
-    <state x="768" y="142" key="SettingsEditor" timestamp="1607875025682">
-      <screen x="0" y="0" width="2560" height="1080" />
-    </state>
-    <state x="768" y="142" key="SettingsEditor/0.0.2560.1080@0.0.2560.1080" timestamp="1607875025682" />
-    <state x="1514" y="243" width="802" height="515" key="Vcs.Push.Dialog.v2" timestamp="1608201439117">
-      <screen x="0" y="0" width="2560" height="1080" />
-    </state>
-    <state x="1514" y="243" width="802" height="515" key="Vcs.Push.Dialog.v2/0.0.2560.1080@0.0.2560.1080" timestamp="1608201439117" />
-    <state x="868" y="-201" width="764" height="603" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1613954947541">
-      <screen x="0" y="0" width="2560" height="1080" />
-    </state>
-    <state x="868" y="-201" width="764" height="603" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2560.1080@0.0.2560.1080" timestamp="1613954947541" />
-    <state x="1045" y="309" width="445" height="159" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608910464994">
-      <screen x="0" y="0" width="2560" height="1080" />
-    </state>
-    <state x="1045" y="309" width="445" height="159" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1080@0.0.2560.1080" timestamp="1608910464994" />
-    <state x="1721" y="387" width="383" height="163" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1608201425507">
-      <screen x="0" y="0" width="2560" height="1080" />
-    </state>
-    <state x="1721" y="387" width="383" height="163" key="git4idea.remote.GitConfigureRemotesDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1608201425507" />
-    <state x="943" y="242" width="672" height="677" key="run.anything.popup" timestamp="1610739689674">
-      <screen x="0" y="0" width="2560" height="1080" />
-    </state>
-    <state x="943" y="242" width="672" height="677" key="run.anything.popup/0.0.2560.1080@0.0.2560.1080" timestamp="1610739689674" />
-    <state x="943" y="222" width="672" height="678" key="search.everywhere.popup" timestamp="1611391497147">
-      <screen x="0" y="0" width="2560" height="1080" />
-    </state>
-    <state x="943" y="222" width="672" height="678" key="search.everywhere.popup/0.0.2560.1080@0.0.2560.1080" timestamp="1611391497147" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

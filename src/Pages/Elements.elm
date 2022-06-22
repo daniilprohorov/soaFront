@@ -10,84 +10,66 @@ import Types exposing (Msg(..), Operation(..))
 import Validation.Fields exposing (validateName)
 
 --updateName product str = case validateName str of
---    Just name -> PageAction <| Add (PrdInp {product | name = Just name}) False Nothing
---    Nothing   -> PageAction <| Add (PrdInp product) False (Just "Name is not valid")
+--    Just name -> PageAction <| Add (VehInp {product | name = Just name}) False Nothing
+--    Nothing   -> PageAction <| Add (VehInp product) False (Just "Name is not valid")
 
-updatePNameI product str = PageAction <| Add (PrdInp {product | name = Just str}) False Nothing
-updatePXI product str = PageAction <| Add (PrdInp {product | x = Just str}) False Nothing
-updatePYI product str = PageAction <| Add (PrdInp {product | y = Just str}) False Nothing
-updatePPriceI product str = PageAction <| Add (PrdInp {product | price = Just str}) False Nothing
-updatePUnitOfMeasureI product str = PageAction <| Add (PrdInp {product | unitofmeasure = Just str}) False Nothing
-updatePManufacturerI product str = PageAction <| Add (PrdInp {product | manufacturer = Just str}) False Nothing
-
-updateONameI organization str = PageAction <| Add (OrgInp {organization | name = Just str}) False Nothing
-updateOFullNameI organization str = PageAction <| Add (OrgInp {organization | fullname = Just str}) False Nothing
-updateOEmployeesCountI organizatoin str = PageAction <| Add (OrgInp {organizatoin | employeescount = Just str}) False Nothing
+updateVNameI vehicle str = PageAction <| Add (VehInp {vehicle | name = Just str}) False Nothing
+updateVCoordinateXI vehicle str = PageAction <| Add (VehInp {vehicle | coordinate_x = Just str}) False Nothing
+updateVCoordinateYI vehicle str = PageAction <| Add (VehInp {vehicle | coordinate_y = Just str}) False Nothing
+updateVEnginePowerI vehicle str = PageAction <| Add (VehInp {vehicle | engine_power = Just str}) False Nothing
+updateVDistanceTravelledI vehicle str = PageAction <| Add (VehInp {vehicle | distance_travelled = Just str}) False Nothing
+updateVVehicleTypeI vehicle str = PageAction <| Add (VehInp {vehicle | vehicle_type = Just str}) False Nothing
+updateVFuelTypeI vehicle str = PageAction <| Add (VehInp {vehicle | fuel_type = Just str}) False Nothing
 
 
 
 
-inputProductEl productInput =
+inputVehicleEl vehicleInput =
     row [ centerX, spacing 16 ]
         [ Input.text [width <| px 100]
-            { onChange=updatePNameI productInput
-            , text = withDefault "" productInput.name
+            { onChange=updateVNameI vehicleInput
+            , text = withDefault "" vehicleInput.name
             , placeholder = Nothing
-            , label = Input.labelAbove [center] (text "Name")
+            , label = Input.labelAbove [center] (text "name")
             }
         , Input.text [width <| px 50]
-            { onChange=updatePXI productInput
-            , text = withDefault "" productInput.x
+            { onChange=updateVCoordinateXI vehicleInput
+            , text = withDefault "" vehicleInput.coordinate_x
             , placeholder = Nothing
-            , label = Input.labelAbove [center] (text "X")
+            , label = Input.labelAbove [center] (text "coordinate_x")
             }
         , Input.text [width <| px 50]
-            { onChange=updatePYI productInput
-            , text = withDefault "" productInput.y
+            { onChange=updateVCoordinateYI vehicleInput
+            , text = withDefault "" vehicleInput.coordinate_y
             , placeholder = Nothing
-            , label = Input.labelAbove [center] (text "Y")
+            , label = Input.labelAbove [center] (text "coordinate_y")
             }
         , Input.text [width <| px 100]
-            { onChange=updatePPriceI productInput
-            , text = withDefault "" productInput.price
+            { onChange=updateVEnginePowerI vehicleInput
+            , text = withDefault "" vehicleInput.engine_power
             , placeholder = Nothing
-            , label = Input.labelAbove [center] (text "Price")
+            , label = Input.labelAbove [center] (text "engine_power")
             }
         , Input.text [width <| px 150]
-            { onChange=updatePUnitOfMeasureI productInput
-            , text = withDefault "" productInput.unitofmeasure
+            { onChange=updateVDistanceTravelledI vehicleInput
+            , text = withDefault "" vehicleInput.distance_travelled
             , placeholder = Nothing
-            , label = Input.labelAbove [center] (text "Unit of measure")
+            , label = Input.labelAbove [center] (text "distance_travelled")
             }
         , Input.text [width <| px 150]
-            { onChange=updatePManufacturerI productInput
-            , text = withDefault "" productInput.manufacturer
+            { onChange=updateVVehicleTypeI vehicleInput
+            , text = withDefault "" vehicleInput.vehicle_type
             , placeholder = Nothing
-            , label = Input.labelAbove [center] (text "Manufacturer")
+            , label = Input.labelAbove [center] (text "vehicle_type")
+            }
+        , Input.text [width <| px 150]
+            { onChange=updateVFuelTypeI vehicleInput
+            , text = withDefault "" vehicleInput.fuel_type
+            , placeholder = Nothing
+            , label = Input.labelAbove [center] (text "fuel_type")
             }
         ]
 
-inputOrganizationEl organizationInput =
-    row [ centerX, spacing 16 ]
-        [ Input.text [width <| px 100]
-            { onChange=updateONameI organizationInput
-            , text = withDefault "" organizationInput.name
-            , placeholder = Nothing
-            , label = Input.labelAbove [center] (text "Name")
-            }
-        , Input.text [width <| px 200]
-            { onChange=updateOFullNameI organizationInput
-            , text = withDefault "" organizationInput.fullname
-            , placeholder = Nothing
-            , label = Input.labelAbove [center] (text "Fullname")
-            }
-        , Input.text [width <| px 50]
-            { onChange=updateOEmployeesCountI organizationInput
-            , text = withDefault "" organizationInput.employeescount
-            , placeholder = Nothing
-            , label = Input.labelAbove [center] (text "Employeescount")
-            }
-        ]
 
 
 updateIdD str = case toInt str of
@@ -118,96 +100,68 @@ showByIdEl id =
             }
         ]
 
-updatePIdE str product = case toInt str of
-    Just i -> PageAction <| Edit i (PrdInp product) False Nothing
-    Nothing -> PageAction <| Edit 0 (PrdInp product) False (Just "input is not valid")
+updateVIdE str vehicle = case toInt str of
+    Just i -> PageAction <| Edit i (VehInp vehicle) False Nothing
+    Nothing -> PageAction <| Edit 0 (VehInp vehicle) False (Just "input is not valid")
 
-updateOIdE str organization = case toInt str of
-    Just i -> PageAction <| Edit i (OrgInp organization) False Nothing
-    Nothing -> PageAction <| Edit 0 (OrgInp organization) False (Just "input is not valid")
 
-updatePNameE id product str = PageAction <| Edit id (PrdInp {product | name = Just str}) False Nothing
-updatePXE id product str = PageAction <| Edit id (PrdInp {product | x = Just str}) False Nothing
-updatePYE id product str = PageAction <| Edit id (PrdInp {product | y = Just str}) False Nothing
-updatePPriceE id product str = PageAction <| Edit id (PrdInp {product | price = Just str}) False Nothing
-updatePUnitOfMeasureE id product str = PageAction <| Edit id (PrdInp {product | unitofmeasure = Just str}) False Nothing
-updatePManufacturerE id product str = PageAction <| Edit id (PrdInp {product | manufacturer = Just str}) False Nothing
+updateVNameE id vehicle str = PageAction <| Edit id (VehInp {vehicle | name = Just str}) False Nothing
+updateVCoordinateXE id vehicle str = PageAction <| Edit id (VehInp {vehicle | coordinate_x = Just str}) False Nothing
+updateVCoordinateYE id vehicle str = PageAction <| Edit id (VehInp {vehicle | coordinate_y = Just str}) False Nothing
+updateVEnginePowerE id vehicle str = PageAction <| Edit id (VehInp {vehicle | engine_power = Just str}) False Nothing
+updateVDistanceTravelledE id vehicle str = PageAction <| Edit id (VehInp {vehicle | distance_travelled = Just str}) False Nothing
+updateVVehicleTypeE id vehicle str = PageAction <| Edit id (VehInp {vehicle | vehicle_type = Just str}) False Nothing
+updateVFuelTypeE id vehicle str = PageAction <| Edit id (VehInp {vehicle | fuel_type = Just str}) False Nothing
 
-updateONameE id organization str = PageAction <| Edit id (OrgInp {organization | name = Just str}) False Nothing
-updateOFullNameE id organization str = PageAction <| Edit id (OrgInp {organization | fullname = Just str}) False Nothing
-updateOEmployeesCountNameE id organization str = PageAction <| Edit id (OrgInp {organization | employeescount = Just str}) False Nothing
-
-editProductEl id productInput =
+editVehicleEl id vehicleInput =
     row [ centerX, spacing 16 ]
         [ Input.text [width <| px 100]
-            { onChange=(\i -> updatePIdE i productInput)
+            { onChange=(\i -> updateVIdE i vehicleInput)
             , text = String.fromInt id
             , placeholder = Nothing
-            , label = Input.labelAbove [center] (text "Id")
+            , label = Input.labelAbove [center] (text "id")
             }
         , Input.text [width <| px 100]
-            { onChange=(\s -> updatePNameE id productInput s)
-            , text = withDefault "" productInput.name
+            { onChange=(\s -> updateVNameE id vehicleInput s)
+            , text = withDefault "" vehicleInput.name
             , placeholder = Nothing
-            , label = Input.labelAbove [center] (text "Name")
+            , label = Input.labelAbove [center] (text "name")
             }
         , Input.text [width <| px 50]
-            { onChange=updatePXE id productInput
-            , text = withDefault "" productInput.x
+            { onChange=updateVCoordinateXE id vehicleInput
+            , text = withDefault "" vehicleInput.coordinate_x
             , placeholder = Nothing
-            , label = Input.labelAbove [center] (text "X")
+            , label = Input.labelAbove [center] (text "coordinate_x")
             }
         , Input.text [width <| px 50]
-            { onChange=updatePYE id productInput
-            , text = withDefault "" productInput.y
+            { onChange=updateVCoordinateYE id vehicleInput
+            , text = withDefault "" vehicleInput.coordinate_y
             , placeholder = Nothing
-            , label = Input.labelAbove [center] (text "Y")
+            , label = Input.labelAbove [center] (text "coordinate_y")
             }
         , Input.text [width <| px 100]
-            { onChange=updatePPriceE id productInput
-            , text = withDefault "" productInput.price
+            { onChange=updateVEnginePowerE id vehicleInput
+            , text = withDefault "" vehicleInput.engine_power
             , placeholder = Nothing
-            , label = Input.labelAbove [center] (text "Price")
+            , label = Input.labelAbove [center] (text "engine_power")
             }
         , Input.text [width <| px 150]
-            { onChange=updatePUnitOfMeasureE id productInput
-            , text = withDefault "" productInput.unitofmeasure
+            { onChange=updateVDistanceTravelledE id vehicleInput
+            , text = withDefault "" vehicleInput.distance_travelled
             , placeholder = Nothing
-            , label = Input.labelAbove [center] (text "Unit of measure")
+            , label = Input.labelAbove [center] (text "distance_travelled")
             }
         , Input.text [width <| px 150]
-            { onChange=updatePManufacturerE id productInput
-            , text = withDefault "" productInput.manufacturer
+            { onChange=updateVVehicleTypeE id vehicleInput
+            , text = withDefault "" vehicleInput.vehicle_type
             , placeholder = Nothing
-            , label = Input.labelAbove [center] (text "Manufacturer")
+            , label = Input.labelAbove [center] (text "vehicle_type")
             }
-        ]
-
-editOrganizationEl id organizationInput =
-    row [ centerX, spacing 16 ]
-        [ Input.text [width <| px 100]
-            { onChange=(\i -> updateOIdE i organizationInput)
-            , text = String.fromInt id
+        , Input.text [width <| px 150]
+            { onChange=updateVFuelTypeE id vehicleInput
+            , text = withDefault "" vehicleInput.fuel_type
             , placeholder = Nothing
-            , label = Input.labelAbove [center] (text "Id")
-            }
-        , Input.text [width <| px 100]
-            { onChange=(\s -> updateONameE id organizationInput s)
-            , text = withDefault "" organizationInput.name
-            , placeholder = Nothing
-            , label = Input.labelAbove [center] (text "Name")
-            }
-        , Input.text [width <| px 100]
-            { onChange=(\s -> updateOFullNameE id organizationInput s)
-            , text = withDefault "" organizationInput.fullname
-            , placeholder = Nothing
-            , label = Input.labelAbove [center] (text "FullName")
-            }
-        , Input.text [width <| px 100]
-            { onChange=(\s -> updateOEmployeesCountNameE id organizationInput s)
-            , text = withDefault "" organizationInput.employeescount
-            , placeholder = Nothing
-            , label = Input.labelAbove [center] (text "Employees count")
+            , label = Input.labelAbove [center] (text "fuel_type")
             }
         ]
 

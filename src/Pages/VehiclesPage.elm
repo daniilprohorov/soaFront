@@ -1,27 +1,27 @@
-module Pages.ProductsPage exposing (..)
+module Pages.VehiclesPage exposing (..)
 
 import DataField exposing (DataField(..), DataFieldInput(..))
 import Element exposing (centerX, column, paragraph, px, text, width)
 import Element.Font exposing (center)
 import Element.Input as Input exposing (button)
 import Maybe exposing (withDefault)
-import Pages.Elements exposing (deleteEl, editProductEl, inputProductEl, showByIdEl)
+import Pages.Elements exposing (deleteEl, editVehicleEl, inputVehicleEl, showByIdEl)
 import Pages.Layouts exposing (centerLayout, centerXLayout, twoColumnsLayout)
 import Pages.Styles exposing (buttonStyle)
-import Products exposing (printProducts, productInputDef, Product)
+import Vehicles exposing (printVehicles, vehicleInputDef, Vehicle)
 import Types exposing (Msg(..), Operation(..), ToPage(..), addProductMsgDef, defMain)
 
-showProductsPage operation data = case operation of
-    Main sort filter filterApply elemsPerPage page-> mainProducts data sort filter filterApply elemsPerPage page
-    Add (PrdInp dataFieldInput) send fail -> addProduct dataFieldInput send fail
-    Edit id (PrdInp dataFieldInput) send fail -> editProduct id dataFieldInput send fail
-    DeleteById id _ fail -> deleteProduct id fail
-    ShowById id _ fail res -> showByIdProduct id fail data
+showVehiclesPage operation data = case operation of
+    Main sort filter filterApply elemsPerPage page-> mainVehicles data sort filter filterApply elemsPerPage page
+    Add (VehInp dataFieldInput) send fail -> addVehicle dataFieldInput send fail
+    Edit id (VehInp dataFieldInput) send fail -> editVehicle id dataFieldInput send fail
+    DeleteById id _ fail -> deleteVehicle id fail
+    ShowById id _ fail res -> showByIdVehicle id fail data
     _ -> Debug.todo "lul"
 
-mainProducts data sort filter filterApply elemsPerPage page = case data of
-    Just (Prds products) -> twoColumnsLayout
-        [ paragraph [ center ] [ text "Products" ]
+mainVehicles data sort filter filterApply elemsPerPage page = case data of
+    Just (Prds vehicles) -> twoColumnsLayout
+        [ paragraph [ center ] [ text "vehicles" ]
         , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
         , column buttonStyle
             [ paragraph [center] [text "Sort"]
@@ -46,7 +46,7 @@ mainProducts data sort filter filterApply elemsPerPage page = case data of
             ]
         , button buttonStyle {onPress=Just <| addProductMsgDef, label=text "Add Product"}
         , button buttonStyle {onPress=Just <| PageAction (DeleteById 0 False Nothing), label=text "Delete by Id"}
-        , button buttonStyle {onPress=Just <| PageAction (Edit 0 (PrdInp productInputDef) False Nothing), label=text "Edit"}
+        , button buttonStyle {onPress=Just <| PageAction (Edit 0 (VehInp vehicleInputDef) False Nothing), label=text "Edit"}
         , button buttonStyle {onPress=Just <| PageAction (ShowById 0 False Nothing Nothing), label=text "Show by id"}
         , paragraph [center]
             [ text <| "Elems per page = " ++ (String.fromInt elemsPerPage)
@@ -68,65 +68,65 @@ mainProducts data sort filter filterApply elemsPerPage page = case data of
             , button buttonStyle {onPress=Just <| PageAction (Main sort filter filterApply elemsPerPage (page+1)), label=text">"}
             ]
         ]
-        [ paragraph [centerX] [ printProducts products ]
+        [ paragraph [centerX] [ printVehicles vehicles ]
         ]
 
-    Just _ -> Debug.todo "show products error"
+    Just _ -> Debug.todo "show vehicles error"
 
     Nothing -> twoColumnsLayout
-        [ paragraph [ center ] [ text "Products" ]
+        [ paragraph [ center ] [ text "vehicles" ]
         , button buttonStyle {onPress=Just <| addProductMsgDef, label=text "Add Product"}
         , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
         ]
         [ paragraph [centerX] [ text "ERROR" ]
         ]
 
-addProduct dataFieldInput send fail = case (dataFieldInput, send, fail) of
-    (productInput, False, Nothing) -> twoColumnsLayout
-        [ paragraph [ center ] [ text "Products" ]
-        , button buttonStyle {onPress=Just <| PageAction defMain , label=text "Products main"}
+addVehicle dataFieldInput send fail = case (dataFieldInput, send, fail) of
+    (vehicleInput, False, Nothing) -> twoColumnsLayout
+        [ paragraph [ center ] [ text "vehicles" ]
+        , button buttonStyle {onPress=Just <| PageAction defMain , label=text "vehicles main"}
         , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
-        , button buttonStyle {onPress= Just <| PageAction (Add (PrdInp productInput) True Nothing), label=text "Send"}
+        , button buttonStyle {onPress= Just <| PageAction (Add (VehInp vehicleInput) True Nothing), label=text "Send"}
         ]
-        [ inputProductEl productInput
+        [ inputVehicleEl vehicleInput
         ]
-    (productInput, _, Just msg) -> twoColumnsLayout
-        [ paragraph [ center ] [ text "Add Products" ]
-        , button buttonStyle {onPress=Just <| PageAction defMain , label=text "Products main"}
+    (vehicleInput, _, Just msg) -> twoColumnsLayout
+        [ paragraph [ center ] [ text "Add vehicles" ]
+        , button buttonStyle {onPress=Just <| PageAction defMain , label=text "vehicles main"}
         , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
-        , button buttonStyle {onPress= Just <| PageAction (Add (PrdInp productInput) True Nothing), label=text "Send"}
+        , button buttonStyle {onPress= Just <| PageAction (Add (VehInp vehicleInput) True Nothing), label=text "Send"}
         ]
-        [ inputProductEl productInput
+        [ inputVehicleEl vehicleInput
         , paragraph [centerX] [ text msg ]
         ]
 
     (_, True, Nothing) -> Debug.todo "Error in add product"
 
-editProduct id dataFieldInput send fail = case (dataFieldInput, send, fail) of
-    (productInput, False, Nothing) -> twoColumnsLayout
+editVehicle id dataFieldInput send fail = case (dataFieldInput, send, fail) of
+    (vehicleInput, False, Nothing) -> twoColumnsLayout
         [ paragraph [ center ] [ text "Edit product" ]
-        , button buttonStyle {onPress=Just <| PageAction defMain , label=text "Products main"}
+        , button buttonStyle {onPress=Just <| PageAction defMain , label=text "vehicles main"}
         , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
-        , button buttonStyle {onPress= Just <| PageAction (Edit id (PrdInp productInput) True Nothing), label=text "Send"}
+        , button buttonStyle {onPress= Just <| PageAction (Edit id (VehInp vehicleInput) True Nothing), label=text "Send"}
         ]
-        [ editProductEl id productInput
+        [ editVehicleEl id vehicleInput
         ]
-    (productInput, _, Just msg) -> twoColumnsLayout
-        [ paragraph [ center ] [ text "Edit products" ]
-        , button buttonStyle {onPress=Just <| PageAction defMain , label=text "Products main"}
+    (vehicleInput, _, Just msg) -> twoColumnsLayout
+        [ paragraph [ center ] [ text "Edit vehicles" ]
+        , button buttonStyle {onPress=Just <| PageAction defMain , label=text "vehicles main"}
         , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
-        , button buttonStyle {onPress= Just <| PageAction (Edit id (PrdInp productInput) True Nothing), label=text "Send"}
+        , button buttonStyle {onPress= Just <| PageAction (Edit id (VehInp vehicleInput) True Nothing), label=text "Send"}
         ]
-        [ editProductEl id productInput
+        [ editVehicleEl id vehicleInput
         , paragraph [centerX] [ text msg ]
         ]
 
     (_, True, Nothing) -> Debug.todo "Error in add product"
 
-deleteProduct id fail = case fail of
+deleteVehicle id fail = case fail of
     Nothing -> twoColumnsLayout
         [ paragraph [ center ] [ text "Delete Product" ]
-        , button buttonStyle {onPress=Just <| PageAction defMain , label=text "Products main"}
+        , button buttonStyle {onPress=Just <| PageAction defMain , label=text "vehicles main"}
         , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
         , button buttonStyle {onPress= Just <| PageAction (DeleteById id True Nothing), label=text "Delete"}
         ]
@@ -135,7 +135,7 @@ deleteProduct id fail = case fail of
 
     Just e -> twoColumnsLayout
         [ paragraph [ center ] [ text "Delete Product" ]
-        , button buttonStyle {onPress=Just <| PageAction defMain , label=text "Products main"}
+        , button buttonStyle {onPress=Just <| PageAction defMain , label=text "vehicles main"}
         , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
         , button buttonStyle {onPress= Just <| PageAction (DeleteById id True Nothing), label=text "Delete"}
         ]
@@ -143,10 +143,10 @@ deleteProduct id fail = case fail of
         , paragraph [centerX] [ text e ]
         ]
 
-showByIdProduct id fail data = case (fail, data) of
+showByIdVehicle id fail data = case (fail, data) of
     (Nothing, Nothing) -> twoColumnsLayout
         [ paragraph [ center ] [ text "Show product by id" ]
-        , button buttonStyle {onPress=Just <| PageAction defMain , label=text "Products main"}
+        , button buttonStyle {onPress=Just <| PageAction defMain , label=text "vehicles main"}
         , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
         , button buttonStyle {onPress= Just <| PageAction (ShowById id True Nothing Nothing), label=text "Show"}
         ]
@@ -155,18 +155,18 @@ showByIdProduct id fail data = case (fail, data) of
 
     (Nothing, Just (Prd product)) -> twoColumnsLayout
         [ paragraph [ center ] [ text "Show product by id" ]
-        , button buttonStyle {onPress=Just <| PageAction defMain , label=text "Products main"}
+        , button buttonStyle {onPress=Just <| PageAction defMain , label=text "vehicles main"}
         , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
         ]
 
-        [ paragraph [centerX] [ printProducts [product] ]
+        [ paragraph [centerX] [ printVehicles [product] ]
         ]
-    (Nothing, Just (Org _)) -> Debug.todo "only products"
-    (Nothing, Just (Prds _)) -> Debug.todo "only products"
-    (Nothing, Just (Orgs _)) -> Debug.todo "only products"
+    (Nothing, Just (Org _)) -> Debug.todo "only vehicles"
+    (Nothing, Just (Prds _)) -> Debug.todo "only vehicles"
+    (Nothing, Just (Orgs _)) -> Debug.todo "only vehicles"
 
     (Just e, _) -> twoColumnsLayout [ paragraph [ center ] [ text "Show product by id" ]
-        , button buttonStyle {onPress=Just <| PageAction defMain , label=text "Products main"}
+        , button buttonStyle {onPress=Just <| PageAction defMain , label=text "vehicles main"}
         , button buttonStyle {onPress=Just <| Go ToMainPage, label=text "Main page"}
         , button buttonStyle {onPress= Just <| PageAction (ShowById id True Nothing Nothing), label=text "Show"}
         ]

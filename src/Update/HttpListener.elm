@@ -2,73 +2,45 @@ module Update.HttpListener exposing (..)
 
 import DataField exposing (DataField(..), DataFieldInput(..))
 import Debug exposing (toString)
-import HttpActions exposing (httpOrganizations, httpPriceAvg, httpPriceSum, httpProducts)
+import HttpActions exposing (httpPriceAvg, httpPriceSum, httpVehicles)
 import Organizations exposing (getOrganization, getOrganizations, organizationInputDef)
-import Products exposing (getProduct, getProducts, productInputDef)
+import Vehicles exposing (getVehicle, getVehicles, vehicleInputDef)
 import Types exposing (HttpMsg(..), Model(..), Operation(..), defMain)
 import Utils exposing (errorToString)
+import Json.Decode exposing (Error(..))
 
 httpUpdate httpMsg model = case httpMsg of
-    HttpGetProducts result filters filterApply elemsperpage page ->
+    HttpGetVehicles result filters filterApply elemsperpage page ->
           let
-              productsList = case result of
-                  Ok fullText -> getProducts fullText
+              vehiclesList = case result of
+                  Ok fullText -> getVehicles fullText
                   Err e -> Err <| toString e
-              products = case productsList of
+              vehicles = case vehiclesList of
                   Ok prds -> Just <| Prds prds
                   Err e -> Nothing
           in
-              (ProductsPage (Main Nothing filters filterApply elemsperpage page) products, Cmd.none)
+              (VehiclesPage (Main Nothing filters filterApply elemsperpage page) vehicles, Cmd.none)
 
-    HttpGetOrganizations result filters filterApply elemsperpage page->
-          let
-              organizationsList = case result of
-                  Ok fullText -> getOrganizations fullText
-                  Err e -> Err <| toString e
-              organizations = case organizationsList of
-                  Ok orgs -> Just <| Orgs orgs
-                  Err e -> Nothing
-          in
-              (OrganizationsPage (Main Nothing filters filterApply elemsperpage page) organizations, Cmd.none)
+    HttpAddVehicle result -> case result of
+        Ok fullText -> ( VehiclesPage defMain Nothing, httpVehicles Nothing Nothing False 20 1 )
+        Err e -> (VehiclesPage (Add (VehInp vehicleInputDef) False (Just "SERVER ERROR. Check manufacturer")) Nothing, Cmd.none )
 
-    HttpAddProduct result -> case result of
-        Ok fullText -> ( ProductsPage defMain Nothing, httpProducts Nothing Nothing False 20 1 )
-        Err e -> (ProductsPage (Add (PrdInp productInputDef) False (Just "SERVER ERROR. Check manufacturer")) Nothing, Cmd.none )
-    HttpAddOrganization result -> case result of
-        Ok fullText -> (OrganizationsPage defMain Nothing, httpOrganizations Nothing Nothing False 20 1 )
-        Err e -> (OrganizationsPage (Add (OrgInp organizationInputDef) False (Just "SERVER ERROR")) Nothing, Cmd.none )
+    HttpDeleteVehicle result -> (VehiclesPage defMain Nothing, httpVehicles Nothing Nothing False 20 1 )
 
-    HttpDeleteProduct result -> (ProductsPage defMain Nothing, httpProducts Nothing Nothing False 20 1 )
-    HttpDeleteOrganization result -> (OrganizationsPage defMain Nothing, httpOrganizations Nothing Nothing False 20 1 )
-
-    HttpShowProduct result -> case result of
+    HttpShowVehicle result -> case result of
         Ok res ->
           let
-              productsList = case result of
-                  Ok fullText -> getProduct fullText
+              vehiclesList = case result of
+                  Ok fullText -> getVehicle fullText
                   Err e -> Err <| toString e
-              product = case productsList of
+              product = case vehiclesList of
                   Ok prd -> Just <| Prd prd
                   Err e -> Nothing
           in
-             (ProductsPage (ShowById 0 True Nothing Nothing) product, Cmd.none )
-        Err e -> (ProductsPage (ShowById 0 True (Just (e |> errorToString)) Nothing) Nothing, Cmd.none )
+             (VehiclesPage (ShowById 0 True Nothing Nothing) product, Cmd.none )
+        Err e -> (VehiclesPage (ShowById 0 True (Just (e |> errorToString)) Nothing) Nothing, Cmd.none )
 
-    HttpShowOrganization result -> case result of
-        Ok res ->
-          let
-              organizationsList = case result of
-                  Ok fullText -> getOrganization fullText
-                  Err e -> Err <| toString e
-              organization = case organizationsList of
-                  Ok prd -> Just <| Org prd
-                  Err e -> Nothing
-          in
-             (OrganizationsPage (ShowById 0 True Nothing Nothing) organization, Cmd.none )
-        Err e -> (OrganizationsPage (ShowById 0 True (Just (e |> errorToString)) Nothing) Nothing, Cmd.none )
-
-    HttpEditProduct result -> (ProductsPage defMain Nothing, httpProducts Nothing Nothing False 20 1 )
-    HttpEditOrganization result -> (OrganizationsPage defMain Nothing, httpOrganizations Nothing Nothing False 20 1 )
+    HttpEditVehicle result -> (VehiclesPage defMain Nothing, httpVehicles Nothing Nothing False 20 1 )
 
     HttpPriceSum result -> case result of
         Ok res -> (MainPage (Just res) Nothing, httpPriceAvg)
@@ -79,8 +51,7 @@ httpUpdate httpMsg model = case httpMsg of
             Ok res -> (MainPage s (Just res), Cmd.none)
             Err e -> (MainPage s (Just "error") , Cmd.none)
 
-        ProductsPage operation maybeDataField -> (MainPage Nothing Nothing, httpPriceSum)
+        VehiclesPage operation maybeDataField -> (MainPage Nothing Nothing, httpPriceSum)
 
 
-        OrganizationsPage operation maybeDataField -> (MainPage Nothing Nothing, httpPriceSum)
 
